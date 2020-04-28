@@ -28,9 +28,9 @@ The solution include 2 devices connected to Azure IoT using Central (SaaS) or Hu
 
 All devices must implement the next interfaces:
 
-- DeviceInformation (Common)
-- SDKInformation (Common)
-- Diagnostics (Custom)
+- [DeviceInformation](./models/DeviceInformation.json) (Common)
+- [SDKInformation](./models/SDKInformation.json) (Common)
+- [Diagnostics](./models/diagnostics.json) (Custom)
 
 ### Device1. Thermostat
 
@@ -98,6 +98,7 @@ The device should handle the property update for `targetTemperature` and gradual
 
 Validate the device with Azure IoT Explorer
 
+- Configure IoT Explorer to resolve models from a local folder
 - Check the telemetry is coming through
 - Check the PnP Components
 - Update the targetTemperature property and see how the telemetry changes and stops.
@@ -121,6 +122,7 @@ Note the device has two implementations of the same interface.
 
 Validate the device with Azure IoT Explorer
 
+- Configure IoT Explorer to resolve models from a local folder
 - Check the telemetry is coming through
 - Check the PnP Components
 - Update the `updateInterval` property and see how the telemetry frequency changes for each sensor
@@ -131,3 +133,23 @@ Validate the device with Azure IoT Explorer
 - Add Telemetry properties to the model and device code, combine telemetry messages with more than one property
 - Add a new command with complex types as input or output parameters
 - Try to update a property when the device is offline
+
+### 3. Create the Cloud Application
+
+The cloud application can be any application that connects to the Hub using the service SDKS (or the REST endpoints). This can be a Console, Desktop or WebApplication.
+
+- List Devices. Use the Registry api to get a list of devices
+- Detect Model Id. Use the DigitalTwins api to get the ModelId
+- Resolve Model. Use the repository API to query for the ModelId
+- Ad-Hoc UI. Create a custom UI for known models.
+- Dynamic UI. Parse the interface contents to render a UI to interact with the device.
+
+#### Things to try
+
+- Query the Device Twin
+- Query the Digital Twin
+- Update the ModelId from the device and see the new Id in the DigitalTwin
+
+## Complete Solution
+
+There is a complete solution available here, and you can use it as a reference, but we encourage you to figure out how to complete the scenario steps by using our public documentation and samples.
