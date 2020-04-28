@@ -34,31 +34,100 @@ All devices must implement the next interfaces:
 
 ### Device1. Thermostat
 
-This device simulates a thermostat with the next characteristics.
+This device simulates a temperature sensor
 
-- Temperature (Telemetry)
-- TargetTemperature (Writable Property)
+- Thermostat.model.json
+  - TemperatureSensor.interface.json
+    - Temperature (Telemetry)
+      - TargetTemperature (Writable Property)
+  - DeviceInfo.interface.json
+  - SdkInfo.interface.json
+  - Diagnostics.interface.json
 
 Users can use the CloudApplication to set the TargetTemperature, the device must adapt the current temperature until it reaches the target temperature.
 
 ### Device2. Weather Station
 
-This device has the next sensors attached to it:
+This device has two sensors -interior and exterior - implementing the Climate Sensor interface.
 
 - ClimateSensor. Interface reporting different climate related parameters.
   - Temperature, Humidity, Pressure (Telemetry)
   - UpdateInterval. (Writable property)
   - GetClimateSummary (Command to return a complex type with highs, lows, and precipitations )
 
-### Sample Models/Interfaces
+- Weather Station
+  - ClimateSensor.interface.json
+  - DeviceInfo.interface.json
+  - SdkInfo.interface.json
+  - Diagnostics.interface.json
 
-- Thermostat.Device.json
-  - TempSensor 
+### CloudAplication
 
+This is an application that connects to IoT Hub using the service SDK offering the next features:
 
+- List Devices and Status
+- For Each Device:
+  - Determine if the device announces a ModelId
+  - Resolve the Model contents from the ModelId
+    - If it's a known model, show an ad-hoc UI
+  - For Models without an ad-hov UI
+    - Show a dynamically generated UI
+  - Devices without ModelId
+    - Show the properties available in the Twin
 
 ## SDK support
 
-## Developer Experiece
+This release is supported by the next SDK versions
 
-## Next Steps
+Device SDK
+
+- azure-iot-sdk-c [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
+- azure-iot-sdk-node [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp) branch
+
+Service SDK
+
+- azure-iot-sdk-node [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp) branch 
+
+## Scenario Steps
+
+### 1. Create the Thermostat Device simulator
+
+Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples) or [node](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device), adapt the sample code to implement the Thermostat model.
+
+The device should handle the property update for `targetTemperature` and gradually increase/decrease the value of the telemetry being sent until the targetTemperature is set.
+
+Validate the device with Azure IoT Explorer
+
+- Check the telemetry is coming through
+- Check the PnP Components
+- Update the targetTemperature property and see how the telemetry changes and stops.
+- Call the Reboot command and see the device reacting to that command
+
+#### Things to try
+
+- Add Telemetry properties to the model and device code, combine telemetry messages with more than one property
+- Add a new command with complex types as input or output parameters
+- Try to update a property when the device is offline
+
+### 2. Create the WeatherStation Device simulator
+
+Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples) or [node](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device), adapt the sample code to implement the WeatherStation model.
+
+The WeatherStation simulator must use random values to produce temperature/humidity/pressure telemetry
+Handle the `updateInterval` property to change the updateIntervalValue for the telemetry
+The `GetClimateSummary` command will return the highs and lows values for a given period.
+
+Note the device has two implementations of the same interface.
+
+Validate the device with Azure IoT Explorer
+
+- Check the telemetry is coming through
+- Check the PnP Components
+- Update the `updateInterval` property and see how the telemetry frequency changes for each sensor
+- Call the `Reboot` command and see the device reacting to that command
+
+#### Things to try
+
+- Add Telemetry properties to the model and device code, combine telemetry messages with more than one property
+- Add a new command with complex types as input or output parameters
+- Try to update a property when the device is offline
