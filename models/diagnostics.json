@@ -1,6 +1,6 @@
 {
     "@context": "dtmi:dtdl:context;2",
-    "@id": "dtmi:azure:iotsamples:diagnostics;1",
+    "@id": "dtmi:azure:iotsamples:Diagnostics;1",
     "@type": "Interface",
     "displayName": "Diagnostics",
     "description": "Provides functionality to report memory usage and reboot the device",
