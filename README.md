@@ -62,7 +62,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 <details>
 
-<summary>See Thermostat model</summary>
+<summary>Thermostat model</summary>
 
 ```json
 {
@@ -97,7 +97,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 <details>
 
-<summary>See Temperature Sensor interface</summary>
+<summary>Temperature Sensor interface</summary>
 
 ```json
 {
@@ -230,13 +230,14 @@ This device has two sensors -interior and exterior - implementing the Climate Se
   ]  
 }
 ```
+
 </details>
 
 The WeatherStation device implement the next interfaces:
 
 <details>
 
-<summary>See WeatherStation model</sumary>
+<summary>WeatherStation model</summary>
 
 ```json
 {
