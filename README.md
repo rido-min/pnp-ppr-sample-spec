@@ -16,7 +16,7 @@ Devices connected to IoT Hub can de described with DTDL, in terms of:
 
 For a BugBash, the instructions should not duplicate content already  available like READMEs or Docs, instead the instructions should help to find information that is not easy to find (not yet indexed, not available publicly, etc.. )
 
-Each section in the Bug Bash can have 3 different activities targeting different levels of complexity:
+Each section in the Bug Bash can have different activities targeting different levels of complexity:
 
 1. **Basic**. These are the minimal instructions to complete the scenario. This is the _happy path_ and should be easy to complete. Eg. Send temperature
 2. **Intermediate**. Offer additional activities to explore the feature in depth. Eg. Use different semantic data types.
@@ -39,7 +39,11 @@ The tools are available as internal previews:
 
 ## Sample Solution  Features
 
-The solution to build includes 2 devices connected to Azure IoT using Central (SaaS) or Hub (PaaS). For Hub a Cloud Application will be required.
+The solution to build includes 2 devices connected to Azure IoT using Central (SaaS) or Hub (PaaS). 
+
+SaaS solution require to configure th Central application creating device templates based on the DTDL models. Central does not supoprt DTLD v2. It's out of scope for this BugBash.
+
+PaaS solutions require some kind of computing resource to connect to the service endpoints, usually REST, by using the Service Client SDKs.
 
 This BugBash uses the following Models to describe the devices features to implement.
 
@@ -126,6 +130,144 @@ This device has two sensors -interior and exterior - implementing the Climate Se
   - UpdateInterval. (Writable property)
   - GetClimateSummary (Command to return a complex type with highs, lows, and precipitations )
 
+<details>
+
+<summary>See Climate Sensor interface</summary>
+
+```json
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:azsamples:iotdd:ClimateSensor;1",
+  "@type": "Interface",
+  "displayName": "Climate Sensor",
+  "description": "Provides functionality to report temperature, humidity, Pressure",
+  "comment": "Requires temperature, hunidity and pressure sensors.",
+  "contents": [
+    {
+      "@type": "Property",
+      "displayName": "Update interval",
+      "description": "Interval of telemetry updates in seconds",
+      "name": "updateInterval",
+      "writable" : true,
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "SemanticType/Temperature"
+      ],
+      "description": "Current temperature on the device",
+      "displayName": "Temperature",
+      "name": "temperature",
+      "schema": "double"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "SemanticType/Humidity"
+      ],
+      "description": "Current humidity on the device",
+      "displayName": "Humidity",
+      "name": "humidity",
+      "schema": "double"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "SemanticType/Pressure"
+      ],
+      "description": "Current Pressure on the device",
+      "displayName": "Pressure",
+      "name": "pressure",
+      "schema": "double"
+    },
+    {
+      "@type": "Command",
+      "description": "Get a report with summary values from the past N days.",
+      "name": "GetClimateSummary",
+      "commandType": "synchronous",
+      "request": {
+        "name": "numberOfDays",
+        "schema": "integer"
+      },
+      "response": {
+        "name": "climateSummaryResponse",
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "SummaryText",
+              "schema": "string"
+            },
+            {
+              "name": "highTemp",
+              "schema": "double"
+            },
+            {
+              "name": "lowTemp",
+              "schema": "double"
+            },
+            {
+              "name": "avgTemp",
+              "schema": "double"
+            },
+            {
+              "name": "numberOfSamples",
+              "schema": "float"
+            }
+          ]
+        }
+      }
+    }
+  ]  
+}
+```
+</details>
+
+The WeatherStation device implement the next interfaces:
+
+<detai;s>
+
+<summary>See WeatherStation model</sumary>
+
+```json
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:azsamples:iotdd:WeatherStation;1",
+  "@type": "Interface",
+  "displayName": "Sample Weather Station with interior and exterior sensors",
+  "contents": [
+    {
+      "@type": "Component",
+      "schema": "dtmi:azsamples:iotdd:ClimateSensor;1",
+      "name": "interior"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azsamples:iotdd:ClimateSensor;1",
+      "name": "exterior"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+      "name": "deviceInfo"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:Client:SDKInformation;1",
+      "name": "sdkInfo"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azsamples:iotdd:Diagnostics;1",
+      "name": "diag"
+    }
+  ]
+}
+```
+
+</details>
+
 ### CloudAplication
 
 This is an application that connects to IoT Hub using the service SDK offering the next features:
@@ -162,6 +304,8 @@ Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree
 
 The device should handle the property update for `targetTemperature` and gradually increase/decrease the value of the telemetry being sent until the targetTemperature is set.
 
+> To connect the device you must create device regsitration in a Hub supporting the May2020 API
+
 Validate the device with Azure IoT Explorer
 
 - Configure IoT Explorer to resolve models from a local folder
@@ -172,19 +316,20 @@ Validate the device with Azure IoT Explorer
 
 #### Things to try
 
-- Add Telemetry properties to the model and device code, combine telemetry messages with more than one property
+- Add Telemetry properties to the model and device code
+- Combine telemetry messages with more than one property
 - Add a new command with complex types as input or output parameters
-- Try to update a property when the device is offline
+- Update a property when the device is offline and then reconnect the device
 
 ### 2. Create the WeatherStation Device simulator
 
 Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples) or [node](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device), adapt the sample code to implement the WeatherStation model.
 
-The WeatherStation simulator must use random values to produce temperature/humidity/pressure telemetry
-Handle the `updateInterval` property to change the updateIntervalValue for the telemetry
-The `GetClimateSummary` command will return the highs and lows values for a given period.
+- The WeatherStation simulator must use random values to produce temperature/humidity/pressure telemetry
+- Handle the `updateInterval` property to change the updateIntervalValue for the telemetry
+- The `GetClimateSummary` command will return the highs and lows values for a given period.
 
-Note the device has two implementations of the same interface.
+> Note the device has two implementations of the same interface.
 
 Validate the device with Azure IoT Explorer
 
@@ -196,13 +341,14 @@ Validate the device with Azure IoT Explorer
 
 #### Things to try
 
-- Add Telemetry properties to the model and device code, combine telemetry messages with more than one property
+- Add Telemetry properties to the model and device code
+- Combine telemetry messages with more than one property
 - Add a new command with complex types as input or output parameters
 - Try to update a property when the device is offline
 
 ### 3. Create the Cloud Application
 
-The cloud application can be any application that connects to the Hub using the service SDKS (or the REST endpoints). This can be a Console, Desktop or WebApplication.
+The cloud application can be any application that connects to the Hub using the service SDKs (or the REST endpoints). This can be a Console, Desktop or WebApplication.
 
 - List Devices. Use the Registry api to get a list of devices
 - Detect Model Id. Use the DigitalTwins api to get the ModelId
