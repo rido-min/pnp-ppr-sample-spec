@@ -2,9 +2,9 @@
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:azsamples:iotdd:ClimateSensor;1",
   "@type": "Interface",
-  "displayName": "Temperature Sensor",
-  "description": "Provides functionality to report temperature, and write property to set the target Temperature",
-  "comment": "Requires temperature sensors.",
+  "displayName": "Climate Sensor",
+  "description": "Provides functionality to report temperature, humidity, Pressure",
+  "comment": "Requires temperature, hunidity and pressure sensors.",
   "contents": [
     {
       "@type": "Property",

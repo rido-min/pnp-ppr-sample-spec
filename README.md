@@ -14,17 +14,17 @@ Devices connected to IoT Hub can de described with DTDL, in terms of:
 
 ### Bug Bash notes
 
-For a BugBash, the instructions should not duplicate content already  available like READMEs or Docs, instead the instructions should help to find information that is not easy to find (not yet indexed, not available publicily, etc.. )
+For a BugBash, the instructions should not duplicate content already  available like READMEs or Docs, instead the instructions should help to find information that is not easy to find (not yet indexed, not available publicly, etc.. )
 
 Each section in the Bug Bash can have 3 different activities targeting different levels of complexity:
 
 1. **Basic**. These are the minimal instructions to complete the scenario. This is the _happy path_ and should be easy to complete. Eg. Send temperature
 2. **Intermediate**. Offer additional activities to explore the feature in depth. Eg. Use different semantic data types.
-3. **Advanced**. Additional activites that will stress the feature being evaluated. Eg. Create telemetry using complex object types.
+3. **Advanced**. Additional activities that will stress the feature being evaluated. Eg. Create telemetry using complex object types.
 
 ### Private environments, and preview SDKs
 
-As the time of writing the version of IoT Hub supporting PnP May2020 release is only deployed to a private hub instance:
+As the time of writing the version of IoT Hub supporting PnP BugBash 2, 08 May2020 release is only deployed to a private hub instance:
 
 ```
 <Connection Strings for IoT Hub>
