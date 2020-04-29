@@ -2,7 +2,7 @@
     "@context": "dtmi:dtdl:context;2",
     "@id": "dtmi:azure:Client:SDKInformation;1",
     "@type": "Interface",
-    "displayName": "Digital Twins Client SDK Information",
+    "displayName": "Client SDK Information",
     "contents": [
         {
             "@type": "Property",

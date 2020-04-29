@@ -2,7 +2,7 @@
     "@context": "dtmi:dtdl:context;2",
     "@id": "dtmi:azure:DeviceManagement:DeviceInformation;1",
     "@type": "Interface",
-    "displayName": "Digital Twins Device Information",
+    "displayName": "Device Information",
     "contents": [
       {
         "@type": "Property",
