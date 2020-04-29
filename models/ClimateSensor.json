@@ -1,0 +1,86 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:azure:iotsamples:TemperatureSensor;1",
+  "@type": "Interface",
+  "displayName": "Temperature Sensor",
+  "description": "Provides functionality to report temperature, and write property to set the target Temperature",
+  "comment": "Requires temperature sensors.",
+  "contents": [
+    {
+      "@type": "Property",
+      "displayName": "Update interval",
+      "description": "Interval of telemetry updates in seconds",
+      "name": "updateInterval",
+      "writable" : true,
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "SemanticType/Temperature"
+      ],
+      "description": "Current temperature on the device",
+      "displayName": "Temperature",
+      "name": "temperature",
+      "schema": "double"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "SemanticType/Humidity"
+      ],
+      "description": "Current humidity on the device",
+      "displayName": "Humidity",
+      "name": "humidity",
+      "schema": "double"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "SemanticType/Pressure"
+      ],
+      "description": "Current Pressure on the device",
+      "displayName": "Pressure",
+      "name": "pressure",
+      "schema": "double"
+    },
+    {
+      "@type": "Command",
+      "description": "Get a report with summary values from the past N days.",
+      "name": "GetClimateSummary",
+      "commandType": "synchronous",
+      "request": {
+        "name": "numberOfDays",
+        "schema": "integer"
+      },
+      "response": {
+        "name": "climateSummaryResponse",
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "SummaryText",
+              "schema": "string"
+            },
+            {
+              "name": "highTemp",
+              "schema": "double"
+            },
+            {
+              "name": "lowTemp",
+              "schema": "double"
+            },
+            {
+              "name": "avgTemp",
+              "schema": "double"
+            },
+            {
+              "name": "numberOfSamples",
+              "schema": "float"
+            }
+          ]
+        }
+      }
+    }    
+  ]  
+}

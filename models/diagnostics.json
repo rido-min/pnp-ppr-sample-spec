@@ -12,8 +12,7 @@
         "description": "Current workingset of the device application",
         "displayName": "Workingset",
         "name": "workingset",
-        "schema": "long",
-        "unit": "kb"
+        "schema": "long"
       },
       {
         "@type": "Command",

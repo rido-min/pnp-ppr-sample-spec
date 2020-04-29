@@ -22,29 +22,100 @@ Each section in the Bug Bash can have 3 different activities targeting different
 2. **Intermediate**. Offer additional activities to explore the feature in depth. Eg. Use different semantic data types.
 3. **Advanced**. Additional activites that will stress the feature being evaluated. Eg. Create telemetry using complex object types.
 
+### Private environments, and preview SDKs
+
+As the time of writing the version of IoT Hub supporting PnP May2020 release is only deployed to a private hub instance:
+
+```
+<Connection Strings for IoT Hub>
+```
+
+The SDKs required to use these features are in the `public-preview-pnp` branches
+
+The tools are available as internal previews:
+
+- Azure IoT Explorer (TBD)
+- VSCode extension for DTDL (TBD)
+
 ## Sample Solution  Features
 
-The solution include 2 devices connected to Azure IoT using Central (SaaS) or Hub (PaaS). For Hub a Cloud Application will be required.
+The solution to build includes 2 devices connected to Azure IoT using Central (SaaS) or Hub (PaaS). For Hub a Cloud Application will be required.
 
-All devices must implement the next interfaces:
+This BugBash uses the following Models to describe the devices features to implement.
+
+We we'll use two common interfaces:
 
 - [DeviceInformation](./models/DeviceInformation.json) (Common)
 - [SDKInformation](./models/SDKInformation.json) (Common)
+
+And a custom interface to monitor the memory and enable reboots:
+
 - [Diagnostics](./models/diagnostics.json) (Custom)
 
 ### Device1. Thermostat
 
-This device simulates a temperature sensor
+This device simulates a temperature sensor, and uses the next interfaces:
 
-- Thermostat.model.json
-  - TemperatureSensor.interface.json
-    - Temperature (Telemetry)
-      - TargetTemperature (Writable Property)
-  - DeviceInfo.interface.json
-  - SdkInfo.interface.json
-  - Diagnostics.interface.json
+[Thermostat Model](./models/Thermostat.json)
 
-Users can use the CloudApplication to set the TargetTemperature, the device must adapt the current temperature until it reaches the target temperature.
+```json
+{
+  "@id": "dtmi:azure:iotsamples:Thermostat;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:iotsamples:TemperatureSensor;1",
+      "name": "tempSensor1"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+      "name": "deviceInfo"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:Client:SDKInformation;1",
+      "name": "sdkInfo"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:iotsamples:diagnostics;1",
+      "name": "diag"
+    }
+  ]
+}
+```
+
+[TemperatureSensor](./models/TemperatureSensor.json)
+
+```json
+{
+  "@id": "dtmi:azure:iotsamples:TemperatureSensor;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Property",
+      "displayName": "Target Temperature",
+      "description": "Desired temperature to configure remotely.",
+      "name": "targetTemperature",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": [
+        "Telemetry"
+      ],
+      "description": "Current temperature on the device",
+      "displayName": "Temperature",
+      "name": "temperature",
+      "schema": "double"
+    }
+  ]  
+}
+```
+
+Users can use IoT Explorer or the CloudApplication to set the TargetTemperature, the device must adapt the current temperature until it reaches the target temperature and then stops sending.
 
 ### Device2. Weather Station
 
@@ -54,12 +125,6 @@ This device has two sensors -interior and exterior - implementing the Climate Se
   - Temperature, Humidity, Pressure (Telemetry)
   - UpdateInterval. (Writable property)
   - GetClimateSummary (Command to return a complex type with highs, lows, and precipitations )
-
-- Weather Station
-  - ClimateSensor.interface.json
-  - DeviceInfo.interface.json
-  - SdkInfo.interface.json
-  - Diagnostics.interface.json
 
 ### CloudAplication
 
@@ -83,6 +148,7 @@ Device SDK
 
 - azure-iot-sdk-c [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
 - azure-iot-sdk-node [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp) branch
+- azure-iot-sdk-python [digitaltwins-preview](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview) branch
 
 Service SDK
 

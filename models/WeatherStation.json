@@ -1,13 +1,18 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:azure:iotsamples:Thermostat;1",
+  "@id": "dtmi:azure:iotsamples:WeatherStation;1",
   "@type": "Interface",
-  "displayName": "Sample thermostat with remote control",
+  "displayName": "Sample Weather Station with interior and exterior sensors",
   "contents": [
     {
       "@type": "Component",
-      "schema": "dtmi:azure:iotsamples:TemperatureSensor;1",
-      "name": "tempSensor1"
+      "schema": "dtmi:azure:iotsamples:ClimateSensor;1",
+      "name": "interior"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:iotsamples:ClimateSensor;1",
+      "name": "exterior"
     },
     {
       "@type": "Component",
