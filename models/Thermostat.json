@@ -1,12 +1,12 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:azure:iotsamples:Thermostat;1",
+  "@id": "dtmi:azsamples:iotdd:Thermostat;1",
   "@type": "Interface",
   "displayName": "Sample thermostat with remote control",
   "contents": [
     {
       "@type": "Component",
-      "schema": "dtmi:azure:iotsamples:TemperatureSensor;1",
+      "schema": "dtmi:azsamples:iotdd:TemperatureSensor;1",
       "name": "tempSensor1"
     },
     {
@@ -21,7 +21,7 @@
     },
     {
       "@type": "Component",
-      "schema": "dtmi:azure:iotsamples:Diagnostics;1",
+      "schema": "dtmi:azsamples:iotdd:Diagnostics;1",
       "name": "diag"
     }
   ]

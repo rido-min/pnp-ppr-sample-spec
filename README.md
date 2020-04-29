@@ -60,12 +60,12 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 ```json
 {
-  "@id": "dtmi:azure:iotsamples:Thermostat;1",
+  "@id": "dtmi:azsamples:iotdd:Thermostat;1",
   "@type": "Interface",
   "contents": [
     {
       "@type": "Component",
-      "schema": "dtmi:azure:iotsamples:TemperatureSensor;1",
+      "schema": "dtmi:azsamples:iotdd:TemperatureSensor;1",
       "name": "tempSensor1"
     },
     {
@@ -80,7 +80,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
     },
     {
       "@type": "Component",
-      "schema": "dtmi:azure:iotsamples:diagnostics;1",
+      "schema": "dtmi:azsamples:iotdd:diagnostics;1",
       "name": "diag"
     }
   ]
@@ -91,7 +91,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 ```json
 {
-  "@id": "dtmi:azure:iotsamples:TemperatureSensor;1",
+  "@id": "dtmi:azsamples:iotdd:TemperatureSensor;1",
   "@type": "Interface",
   "contents": [
     {

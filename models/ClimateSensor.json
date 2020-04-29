@@ -1,6 +1,6 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:azure:iotsamples:TemperatureSensor;1",
+  "@id": "dtmi:azsamples:iotdd:TemperatureSensor;1",
   "@type": "Interface",
   "displayName": "Temperature Sensor",
   "description": "Provides functionality to report temperature, and write property to set the target Temperature",
