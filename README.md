@@ -226,7 +226,7 @@ This device has two sensors -interior and exterior - implementing the Climate Se
 
 The WeatherStation device implement the next interfaces:
 
-<detai;s>
+<details>
 
 <summary>See WeatherStation model</sumary>
 
