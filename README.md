@@ -60,7 +60,9 @@ And a custom interface to monitor the memory and enable reboots:
 
 This device simulates a temperature sensor, and uses the next interfaces:
 
-[Thermostat Model](./models/Thermostat.json)
+<details>
+
+<summary>See Thermostat model</summary>
 
 ```json
 {
@@ -91,7 +93,11 @@ This device simulates a temperature sensor, and uses the next interfaces:
 }
 ```
 
-[TemperatureSensor](./models/TemperatureSensor.json)
+</details>
+
+<details>
+
+<summary>See Temperature Sensor interface</summary>
 
 ```json
 {
@@ -118,6 +124,8 @@ This device simulates a temperature sensor, and uses the next interfaces:
   ]  
 }
 ```
+
+</details>
 
 Users can use IoT Explorer or the CloudApplication to set the TargetTemperature, the device must adapt the current temperature until it reaches the target temperature and then stops sending.
 
