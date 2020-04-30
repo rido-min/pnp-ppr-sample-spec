@@ -3,46 +3,49 @@
   "@id": "dtmi:azsamples:iotdd:ClimateSensor;1",
   "@type": "Interface",
   "displayName": "Climate Sensor",
-  "description": "Provides functionality to report temperature, humidity, Pressure",
-  "comment": "Requires temperature, hunidity and pressure sensors.",
+  "description": "Provides functionality to report temperature, humidity, pressure",
+  "comment": "Requires temperature, humidity and pressure sensors.",
   "contents": [
     {
       "@type": "Property",
       "displayName": "Update interval",
       "description": "Interval of telemetry updates in seconds",
       "name": "updateInterval",
-      "writable" : true,
+      "writable": true,
       "schema": "integer"
     },
     {
       "@type": [
         "Telemetry",
-        "SemanticType/Temperature"
+        "Temperature"
       ],
       "description": "Current temperature on the device",
       "displayName": "Temperature",
       "name": "temperature",
-      "schema": "double"
+      "schema": "double",
+      "unit": "degreeCelsius"
     },
     {
       "@type": [
         "Telemetry",
-        "SemanticType/Humidity"
+        "Humidity"
       ],
       "description": "Current humidity on the device",
       "displayName": "Humidity",
       "name": "humidity",
-      "schema": "double"
+      "schema": "double",
+      "unit": "gramPerCubicMetre "
     },
     {
       "@type": [
         "Telemetry",
-        "SemanticType/Pressure"
+        "Pressure"
       ],
-      "description": "Current Pressure on the device",
+      "description": "Current pressure on the device",
       "displayName": "Pressure",
       "name": "pressure",
-      "schema": "double"
+      "schema": "double",
+      "unit": "bar"
     },
     {
       "@type": "Command",
@@ -81,6 +84,6 @@
           ]
         }
       }
-    }    
-  ]  
+    }
+  ]
 }

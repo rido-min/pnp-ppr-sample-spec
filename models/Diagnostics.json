@@ -6,9 +6,7 @@
     "description": "Provides functionality to report memory usage and reboot the device",
     "contents": [
       {
-        "@type": [
-          "Telemetry"
-        ],
+        "@type": "Telemetry",
         "description": "Current workingset of the device application",
         "displayName": "Workingset",
         "name": "workingset",

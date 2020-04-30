@@ -16,12 +16,14 @@
     },
     {
       "@type": [
-        "Telemetry"
+        "Telemetry",
+        "Temperature"
       ],
       "description": "Current temperature on the device",
       "displayName": "Temperature",
       "name": "temperature",
-      "schema": "double"
+      "schema": "double",
+      "unit": "degreeCelsius"
     }
-  ]  
+  ]
 }
