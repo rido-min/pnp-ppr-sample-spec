@@ -66,12 +66,12 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 ```json
 {
-  "@id": "dtmi:azsamples:iotdd:Thermostat;1",
+  "@id": "dtmi:com:examples:Thermostat;1",
   "@type": "Interface",
   "contents": [
     {
       "@type": "Component",
-      "schema": "dtmi:azsamples:iotdd:TemperatureSensor;1",
+      "schema": "dtmi:com:examples:TemperatureSensor;1",
       "name": "tempSensor1"
     },
     {
@@ -86,7 +86,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
     },
     {
       "@type": "Component",
-      "schema": "dtmi:azsamples:iotdd:diagnostics;1",
+      "schema": "dtmi:com:examples:diagnostics;1",
       "name": "diag"
     }
   ]
@@ -101,7 +101,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 ```json
 {
-  "@id": "dtmi:azsamples:iotdd:TemperatureSensor;1",
+  "@id": "dtmi:com:examples:TemperatureSensor;1",
   "@type": "Interface",
   "contents": [
     {
@@ -145,7 +145,7 @@ This device has two sensors -interior and exterior - implementing the Climate Se
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:azsamples:iotdd:ClimateSensor;1",
+  "@id": "dtmi:com:examples:ClimateSensor;1",
   "@type": "Interface",
   "displayName": "Climate Sensor",
   "description": "Provides functionality to report temperature, humidity, Pressure",
@@ -242,18 +242,18 @@ The WeatherStation device implement the next interfaces:
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:azsamples:iotdd:WeatherStation;1",
+  "@id": "dtmi:com:examples:WeatherStation;1",
   "@type": "Interface",
   "displayName": "Sample Weather Station with interior and exterior sensors",
   "contents": [
     {
       "@type": "Component",
-      "schema": "dtmi:azsamples:iotdd:ClimateSensor;1",
+      "schema": "dtmi:com:examples:ClimateSensor;1",
       "name": "interior"
     },
     {
       "@type": "Component",
-      "schema": "dtmi:azsamples:iotdd:ClimateSensor;1",
+      "schema": "dtmi:com:examples:ClimateSensor;1",
       "name": "exterior"
     },
     {
@@ -268,7 +268,7 @@ The WeatherStation device implement the next interfaces:
     },
     {
       "@type": "Component",
-      "schema": "dtmi:azsamples:iotdd:Diagnostics;1",
+      "schema": "dtmi:com:examples:Diagnostics;1",
       "name": "diag"
     }
   ]

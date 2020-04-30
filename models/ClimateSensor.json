@@ -1,6 +1,6 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:azsamples:iotdd:ClimateSensor;1",
+  "@id": "dtmi:com:examples:ClimateSensor;1",
   "@type": "Interface",
   "displayName": "Climate Sensor",
   "description": "Provides functionality to report temperature, humidity, pressure",
