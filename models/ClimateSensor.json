@@ -34,7 +34,7 @@
       "displayName": "Humidity",
       "name": "humidity",
       "schema": "double",
-      "unit": "gramPerCubicMetre "
+      "unit": "gramPerCubicMetre"
     },
     {
       "@type": [
