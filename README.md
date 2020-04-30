@@ -18,15 +18,14 @@ For a BugBash, the instructions should not duplicate content already  available 
 
 Each section in the Bug Bash can have different activities targeting different levels of complexity:
 
-1. **Basic**. These are the minimal instructions to complete the scenario. This is the _happy path_ and should be easy to complete. Eg. Send temperature
-2. **Intermediate**. Offer additional activities to explore the feature in depth. Eg. Use different semantic data types.
-3. **Advanced**. Additional activities that will stress the feature being evaluated. Eg. Create telemetry using complex object types.
+1. **Default**. These are the minimal instructions to complete the scenario. This is the _happy path_ and should be easy to complete. Eg. Send temperature
+2. **Things to Try**. Offer additional activities to explore the feature in depth. Eg. Use different semantic data types, complex types, etc..
 
 ### Private environments, and preview SDKs
 
 As the time of writing the version of IoT Hub supporting PnP BugBash 2, 08 May2020 release is only deployed to a private hub instance:
 
-```
+```js
 <Connection Strings for IoT Hub>
 ```
 
@@ -101,8 +100,12 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 ```json
 {
+  "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:examples:TemperatureSensor;1",
   "@type": "Interface",
+  "displayName": "Temperature Sensor",
+  "description": "Provides functionality to report temperature, and write property to set the target Temperature",
+  "comment": "Requires temperature sensors.",
   "contents": [
     {
       "@type": "Property",
@@ -114,14 +117,16 @@ This device simulates a temperature sensor, and uses the next interfaces:
     },
     {
       "@type": [
-        "Telemetry"
+        "Telemetry",
+        "Temperature"
       ],
       "description": "Current temperature on the device",
       "displayName": "Temperature",
       "name": "temperature",
-      "schema": "double"
+      "schema": "double",
+      "unit": "degreeCelsius"
     }
-  ]  
+  ]
 }
 ```
 
@@ -148,46 +153,49 @@ This device has two sensors -interior and exterior - implementing the Climate Se
   "@id": "dtmi:com:examples:ClimateSensor;1",
   "@type": "Interface",
   "displayName": "Climate Sensor",
-  "description": "Provides functionality to report temperature, humidity, Pressure",
-  "comment": "Requires temperature, hunidity and pressure sensors.",
+  "description": "Provides functionality to report temperature, humidity, pressure",
+  "comment": "Requires temperature, humidity and pressure sensors.",
   "contents": [
     {
       "@type": "Property",
       "displayName": "Update interval",
       "description": "Interval of telemetry updates in seconds",
       "name": "updateInterval",
-      "writable" : true,
+      "writable": true,
       "schema": "integer"
     },
     {
       "@type": [
         "Telemetry",
-        "SemanticType/Temperature"
+        "Temperature"
       ],
       "description": "Current temperature on the device",
       "displayName": "Temperature",
       "name": "temperature",
-      "schema": "double"
+      "schema": "double",
+      "unit": "degreeCelsius"
     },
     {
       "@type": [
         "Telemetry",
-        "SemanticType/Humidity"
+        "Humidity"
       ],
       "description": "Current humidity on the device",
       "displayName": "Humidity",
       "name": "humidity",
-      "schema": "double"
+      "schema": "double",
+      "unit": "gramPerCubicMetre "
     },
     {
       "@type": [
         "Telemetry",
-        "SemanticType/Pressure"
+        "Pressure"
       ],
-      "description": "Current Pressure on the device",
+      "description": "Current pressure on the device",
       "displayName": "Pressure",
       "name": "pressure",
-      "schema": "double"
+      "schema": "double",
+      "unit": "bar"
     },
     {
       "@type": "Command",
@@ -227,7 +235,7 @@ This device has two sensors -interior and exterior - implementing the Climate Se
         }
       }
     }
-  ]  
+  ]
 }
 ```
 
@@ -309,7 +317,7 @@ Service SDK
 
 ### 1. Create the Thermostat Device simulator
 
-Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples) or [node](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device), adapt the sample code to implement the Thermostat model.
+Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples) or [node](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device), described in the docs [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=release-preview-refresh-iot-pnp) and [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=release-preview-refresh-iot-pnp). Adapt the samples  to implement the Thermostat model.
 
 The device should handle the property update for `targetTemperature` and gradually increase/decrease the value of the telemetry being sent until the targetTemperature is set.
 
@@ -332,7 +340,7 @@ Validate the device with Azure IoT Explorer
 
 ### 2. Create the WeatherStation Device simulator
 
-Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples) or [node](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device), adapt the sample code to implement the WeatherStation model.
+Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples) or [node](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device), described in the docs [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=release-preview-refresh-iot-pnp) and [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=release-preview-refresh-iot-pnp). Adapt the samples to implement the WeatherStation model.
 
 - The WeatherStation simulator must use random values to produce temperature/humidity/pressure telemetry
 - Handle the `updateInterval` property to change the updateIntervalValue for the telemetry
@@ -374,3 +382,4 @@ The cloud application can be any application that connects to the Hub using the 
 ## Complete Solution
 
 There is a complete solution available here, and you can use it as a reference, but we encourage you to figure out how to complete the scenario steps by using our public documentation and samples.
+
