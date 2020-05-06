@@ -15,6 +15,14 @@
       "writable": true
     },
     {
+      "@type": "Property",
+      "displayName": "Current Temperature",
+      "description": "Current temperature reported from the device.",
+      "name": "currentTemperature",
+      "schema": "double",
+      "writable": false
+    },
+    {
       "@type": [
         "Telemetry",
         "Temperature"

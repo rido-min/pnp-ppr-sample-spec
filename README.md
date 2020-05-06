@@ -125,6 +125,14 @@ This device simulates a temperature sensor, and uses the next interfaces:
       "writable": true
     },
     {
+      "@type": "Property",
+      "displayName": "Current Temperature",
+      "description": "Current temperature reported from the device.",
+      "name": "currentTemperature",
+      "schema": "double",
+      "writable": false
+    },
+    {
       "@type": [
         "Telemetry",
         "Temperature"
@@ -141,7 +149,9 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 </details>
 
-Users can use IoT Explorer or the CloudApplication to set the TargetTemperature, the device must adapt the current temperature until it reaches the target temperature and then stops sending.
+The device must adapt the current temperature until it reaches the target, during the process the current temperature should be reported via telemetry and updating the currentTemperature property.
+
+Users can use IoT Explorer or the CloudApplication to update the TargetTemperature and see how the device reacts to the change.
 
 ### CloudAplication
 
