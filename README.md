@@ -12,14 +12,7 @@ Devices connected to IoT Hub can de described with DTDL, in terms of:
 - Commands (Using the Hub Direct Methods feature)
 - Telemetry (processed through EventHub)
 
-### Bug Bash notes
-
-For a BugBash, the instructions should not duplicate content already  available like READMEs or Docs, instead the instructions should help to find information that is not easy to find (not yet indexed, not available publicly, etc.. )
-
-Each section in the Bug Bash can have different activities targeting different levels of complexity:
-
-1. **Default**. These are the minimal instructions to complete the scenario. This is the _happy path_ and should be easy to complete. Eg. Send temperature
-2. **Things to Try**. Offer additional activities to explore the feature in depth. Eg. Use different semantic data types, complex types, etc..
+Review the docs [IoT Plug and Play Preview Documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=release-preview-refresh-iot-pnp).
 
 ### Private environments, and preview SDKs
 
@@ -29,18 +22,33 @@ As the time of writing the version of IoT Hub supporting PnP BugBash 2, 08 May20
 <Connection Strings for IoT Hub>
 ```
 
-The SDKs required to use these features are in the `public-preview-pnp` branches
+#### SDK support
+
+This release is supported by the next SDK versions
+
+Device SDK
+
+- azure-iot-sdk-c [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
+- azure-iot-sdk-node [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp) branch
+- azure-iot-sdk-python [digitaltwins-preview](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview) branch
+
+Service SDK
+
+- azure-iot-sdk-node [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp) branch
+- azure-iot-sdk-python [digitaltwins-preview](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview) branch
+
+#### PnP related tools
 
 The tools are available as internal previews:
 
-- Azure IoT Explorer (TBD)
-- VSCode extension for DTDL (TBD)
+- Azure IoT Explorer (available as private release in [YingXue/azure-iot-explorer/releases](https://github.com/YingXue/azure-iot-explorer/releases) )
+- VSCode extension for DTDL (availabe as a private release in [microsoft/vscode-azure-digital-twins/releases](https://github.com/microsoft/vscode-azure-digital-twins/releases) ). To install, download the `.vsix` file and install in VSCode as decribed [here](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix).
 
 ## Sample Solution  Features
 
-The solution to build includes 2 devices connected to Azure IoT using Central (SaaS) or Hub (PaaS). 
+The solution to build includes 1 device connected to Azure IoT using Central (SaaS) or Hub (PaaS).
 
-SaaS solution require to configure th Central application creating device templates based on the DTDL models. Central does not supoprt DTLD v2. It's out of scope for this BugBash.
+>Note: SaaS solution require to configure th Central application creating device templates based on the DTDL models. Central does not supoprt DTLD v2. It's out of scope for this BugBash.
 
 PaaS solutions require some kind of computing resource to connect to the service endpoints, usually REST, by using the Service Client SDKs.
 
@@ -55,7 +63,7 @@ And a custom interface to monitor the memory and enable reboots:
 
 - [Diagnostics](./models/Diagnostics.json) (Custom)
 
-### Device1. Thermostat
+### Thermostat Device
 
 This device simulates a temperature sensor, and uses the next interfaces:
 
@@ -134,157 +142,6 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 Users can use IoT Explorer or the CloudApplication to set the TargetTemperature, the device must adapt the current temperature until it reaches the target temperature and then stops sending.
 
-### Device2. Weather Station
-
-This device has two sensors -interior and exterior - implementing the Climate Sensor interface.
-
-- ClimateSensor. Interface reporting different climate related parameters.
-  - Temperature, Humidity, Pressure (Telemetry)
-  - UpdateInterval. (Writable property)
-  - GetClimateSummary (Command to return a complex type with highs, lows, and precipitations )
-
-<details>
-
-<summary>See Climate Sensor interface</summary>
-
-```json
-{
-  "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:examples:ClimateSensor;1",
-  "@type": "Interface",
-  "displayName": "Climate Sensor",
-  "description": "Provides functionality to report temperature, humidity, pressure",
-  "comment": "Requires temperature, humidity and pressure sensors.",
-  "contents": [
-    {
-      "@type": "Property",
-      "displayName": "Update interval",
-      "description": "Interval of telemetry updates in seconds",
-      "name": "updateInterval",
-      "writable": true,
-      "schema": "integer"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Temperature"
-      ],
-      "description": "Current temperature on the device",
-      "displayName": "Temperature",
-      "name": "temperature",
-      "schema": "double",
-      "unit": "degreeCelsius"
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Humidity"
-      ],
-      "description": "Current humidity on the device",
-      "displayName": "Humidity",
-      "name": "humidity",
-      "schema": "double",
-      "unit": "gramPerCubicMetre "
-    },
-    {
-      "@type": [
-        "Telemetry",
-        "Pressure"
-      ],
-      "description": "Current pressure on the device",
-      "displayName": "Pressure",
-      "name": "pressure",
-      "schema": "double",
-      "unit": "bar"
-    },
-    {
-      "@type": "Command",
-      "description": "Get a report with summary values from the past N days.",
-      "name": "GetClimateSummary",
-      "commandType": "synchronous",
-      "request": {
-        "name": "numberOfDays",
-        "schema": "integer"
-      },
-      "response": {
-        "name": "climateSummaryResponse",
-        "schema": {
-          "@type": "Object",
-          "fields": [
-            {
-              "name": "SummaryText",
-              "schema": "string"
-            },
-            {
-              "name": "highTemp",
-              "schema": "double"
-            },
-            {
-              "name": "lowTemp",
-              "schema": "double"
-            },
-            {
-              "name": "avgTemp",
-              "schema": "double"
-            },
-            {
-              "name": "numberOfSamples",
-              "schema": "float"
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-</details>
-
-The WeatherStation device implement the next interfaces:
-
-<details>
-
-<summary>WeatherStation model</summary>
-
-```json
-{
-  "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:examples:WeatherStation;1",
-  "@type": "Interface",
-  "displayName": "Sample Weather Station with interior and exterior sensors",
-  "contents": [
-    {
-      "@type": "Component",
-      "schema": "dtmi:com:examples:ClimateSensor;1",
-      "name": "interior"
-    },
-    {
-      "@type": "Component",
-      "schema": "dtmi:com:examples:ClimateSensor;1",
-      "name": "exterior"
-    },
-    {
-      "@type": "Component",
-      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
-      "name": "deviceInfo"
-    },
-    {
-      "@type": "Component",
-      "schema": "dtmi:azure:Client:SDKInformation;1",
-      "name": "sdkInfo"
-    },
-    {
-      "@type": "Component",
-      "schema": "dtmi:com:examples:Diagnostics;1",
-      "name": "diag"
-    }
-  ]
-}
-```
-
-</details>
-
 ### CloudAplication
 
 This is an application that connects to IoT Hub using the service SDK offering the next features:
@@ -294,74 +151,45 @@ This is an application that connects to IoT Hub using the service SDK offering t
   - Determine if the device announces a ModelId
   - Resolve the Model contents from the ModelId
     - If it's a known model, show an ad-hoc UI
-  - For Models without an ad-hov UI
+  - For Models without an ad-hoc UI
     - Show a dynamically generated UI
   - Devices without ModelId
     - Show the properties available in the Twin
 
-## SDK support
-
-This release is supported by the next SDK versions
-
-Device SDK
-
-- azure-iot-sdk-c [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
-- azure-iot-sdk-node [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp) branch
-- azure-iot-sdk-python [digitaltwins-preview](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview) branch
-
-Service SDK
-
-- azure-iot-sdk-node [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp) branch 
-
 ## Scenario Steps
 
-### 1. Create the Thermostat Device simulator
+### 1. Review the existing samples
 
-Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples) or [node](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device), described in the docs [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=release-preview-refresh-iot-pnp) and [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=release-preview-refresh-iot-pnp). Adapt the samples  to implement the Thermostat model.
+Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=release-preview-refresh-iot-pnp) to build and run the existing [C device sample](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples)
+
+Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=release-preview-refresh-iot-pnp) to build and run the existing [node device sample](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device)
+
+#### Interact with the devices using IoT Explorer
+
+1. Create a new hub instance following the instructions to use the canary environment (TBD)
+2. Install the private version of IoT Explorer
+3. Create a device registration in IoT explorer and get the device connection string.
+4. Use the connection string to connect the sample devices to hub
+5. IoT Explorer should show the `IoT Plug and Play components` tab
+6. Configure IoT Explorer to load the models from a local folder
+7. Inspect Telemetry, Update properties and invoke commands from IoT Explorer
+
+>Note: These steps are valid to validate any PnP device
+
+### 2. Create the Thermostat Device simulator
+
+Based on the existing samples, create a new device to implement the [Themorstat Model](./models/Thermostat.json).
 
 The device should handle the property update for `targetTemperature` and gradually increase/decrease the value of the telemetry being sent until the targetTemperature is set.
 
-> To connect the device you must create device regsitration in a Hub supporting the May2020 API
-
 Validate the device with Azure IoT Explorer
-
-- Configure IoT Explorer to resolve models from a local folder
-- Check the telemetry is coming through
-- Check the PnP Components
-- Update the targetTemperature property and see how the telemetry changes and stops.
-- Call the Reboot command and see the device reacting to that command
 
 #### Things to try
 
 - Add Telemetry properties to the model and device code
 - Combine telemetry messages with more than one property
 - Add a new command with complex types as input or output parameters
-- Update a property when the device is offline and then reconnect the device
-
-### 2. Create the WeatherStation Device simulator
-
-Based on the sample device for [C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples) or [node](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device), described in the docs [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=release-preview-refresh-iot-pnp) and [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=release-preview-refresh-iot-pnp). Adapt the samples to implement the WeatherStation model.
-
-- The WeatherStation simulator must use random values to produce temperature/humidity/pressure telemetry
-- Handle the `updateInterval` property to change the updateIntervalValue for the telemetry
-- The `GetClimateSummary` command will return the highs and lows values for a given period.
-
-> Note the device has two implementations of the same interface.
-
-Validate the device with Azure IoT Explorer
-
-- Configure IoT Explorer to resolve models from a local folder
-- Check the telemetry is coming through
-- Check the PnP Components
-- Update the `updateInterval` property and see how the telemetry frequency changes for each sensor
-- Call the `Reboot` command and see the device reacting to that command
-
-#### Things to try
-
-- Add Telemetry properties to the model and device code
-- Combine telemetry messages with more than one property
-- Add a new command with complex types as input or output parameters
-- Try to update a property when the device is offline
+- Update a property when the device is offline and verify it's applied when the device reconnects.
 
 ### 3. Create the Cloud Application
 
@@ -378,8 +206,9 @@ The cloud application can be any application that connects to the Hub using the 
 - Query the Device Twin
 - Query the Digital Twin
 - Update the ModelId from the device and see the new Id in the DigitalTwin
+- Update a desired property
+- Invoke a command
 
 ## Complete Solution
 
 There is a complete solution available here, and you can use it as a reference, but we encourage you to figure out how to complete the scenario steps by using our public documentation and samples.
-
