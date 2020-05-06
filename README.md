@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 -->
 # Plug and Play samples spec for May 2020 release
 
 > This spec describes the e2e sample we will use for the next BugBash, and eventually will be published as a tutorial in docs.ms.com.
@@ -184,7 +185,7 @@ The device should handle the property update for `targetTemperature` and gradual
 
 Validate the device with Azure IoT Explorer
 
-#### Things to try
+#### Things to try in the device app
 
 - Add Telemetry properties to the model and device code
 - Combine telemetry messages with more than one property
@@ -201,7 +202,7 @@ The cloud application can be any application that connects to the Hub using the 
 - Ad-Hoc UI. Create a custom UI for known models.
 - Dynamic UI. Parse the interface contents to render a UI to interact with the device.
 
-#### Things to try
+#### Things to try in the service app
 
 - Query the Device Twin
 - Query the Digital Twin
