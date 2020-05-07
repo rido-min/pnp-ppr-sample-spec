@@ -8,7 +8,7 @@ const Command = require('azure-iot-digitaltwins-device').Command
 
 module.exports.Diagnostics = class Diagnostics extends BaseInterface {
   constructor (name, commandCallbackHandler) {
-    super(name, 'dtmi:com:examples:Diagnostics;1', undefined, commandCallbackHandler)
+    super(name, 'dtmi:com:example:Diagnostics;1', undefined, commandCallbackHandler)
     this.workingset = new Telemetry()
     this.reboot = new Command()
   }
