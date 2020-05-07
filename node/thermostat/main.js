@@ -9,7 +9,7 @@ const SdkInformation = require('./sdkInformation').SdkInformation
 const TemperatureSensor = require('./temperatureSensor').TemperatureSensor
 const Diagnostics = require('./diagnostics').Diagnostics
 
-const modelId = 'dtmi:com:examples:Thermostat;1'
+const modelId = 'dtmi:com:example:Thermostat;1'
 const connectionString = process.env.DEVICE_CONNECTION_STRING
 
 let currentTemp = 20
