@@ -44,7 +44,7 @@ The tools are available as internal previews:
 
 - Azure IoT Explorer (available as private release in [YingXue/azure-iot-explorer/releases](https://github.com/YingXue/azure-iot-explorer/releases) )
 - VSCode extension for DTDL (availabe as a private release in [microsoft/vscode-azure-digital-twins/releases](https://github.com/microsoft/vscode-azure-digital-twins/releases) ). To install, download the `.vsix` file and install in VSCode as decribed [here](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix).
-- [IoT Model Repository](https://test.adb.trafficmanager.net/)
+- [IoT Model Repository](https://test.iotmodels.trafficmanager.net/)
 
 ## Sample Solution  Features
 
