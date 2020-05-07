@@ -1,17 +1,17 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:examples:WeatherStation;1",
+  "@id": "dtmi:com:example:WeatherStation;1",
   "@type": "Interface",
   "displayName": "Sample Weather Station with interior and exterior sensors",
   "contents": [
     {
       "@type": "Component",
-      "schema": "dtmi:com:examples:ClimateSensor;1",
+      "schema": "dtmi:com:example:ClimateSensor;1",
       "name": "interior"
     },
     {
       "@type": "Component",
-      "schema": "dtmi:com:examples:ClimateSensor;1",
+      "schema": "dtmi:com:example:ClimateSensor;1",
       "name": "exterior"
     },
     {
@@ -26,7 +26,7 @@
     },
     {
       "@type": "Component",
-      "schema": "dtmi:com:examples:Diagnostics;1",
+      "schema": "dtmi:com:example:Diagnostics;1",
       "name": "diag"
     }
   ]

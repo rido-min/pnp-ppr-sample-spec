@@ -74,12 +74,12 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 ```json
 {
-  "@id": "dtmi:com:examples:Thermostat;1",
+  "@id": "dtmi:com:example:Thermostat;1",
   "@type": "Interface",
   "contents": [
     {
       "@type": "Component",
-      "schema": "dtmi:com:examples:TemperatureSensor;1",
+      "schema": "dtmi:com:example:TemperatureSensor;1",
       "name": "tempSensor1"
     },
     {
@@ -94,7 +94,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
     },
     {
       "@type": "Component",
-      "schema": "dtmi:com:examples:diagnostics;1",
+      "schema": "dtmi:com:example:diagnostics;1",
       "name": "diag"
     }
   ]
@@ -110,7 +110,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:examples:TemperatureSensor;1",
+  "@id": "dtmi:com:example:TemperatureSensor;1",
   "@type": "Interface",
   "displayName": "Temperature Sensor",
   "description": "Provides functionality to report temperature, and write property to set the target Temperature",
