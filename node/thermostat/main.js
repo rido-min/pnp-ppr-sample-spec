@@ -22,7 +22,7 @@ const propertyUpdateHandler = async (component, propertyName, reportedValue, des
   adjustTemp(targetTemp)
   await digitalTwinClient.report(component, { [propertyName]: desiredValue }, {
     code: 200,
-    description: 'helpful descriptive text',
+    description: 'sucess',
     version: version
   })
   console.log('updated the property')
@@ -68,7 +68,7 @@ const thisDeviceInfo = {
   totalMemory: os.totalmem()
 }
 
-function sleep (ms) {
+const sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
@@ -77,7 +77,6 @@ const adjustTemp = async (target) => {
   for (let index = 9; index >= 0; index--) {
     currentTemp = target - step * parseFloat(index)
     console.log('updating current temp to ' + currentTemp)
-
     await sleep(1000)
   }
 }
