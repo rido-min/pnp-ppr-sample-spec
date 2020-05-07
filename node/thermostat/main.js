@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const os = require('os')
 
@@ -9,7 +9,7 @@ const SdkInformation = require('./sdkInformation').SdkInformation
 const TemperatureSensor = require('./temperatureSensor').TemperatureSensor
 const Diagnostics = require('./diagnostics').Diagnostics
 
-const modelId = "dtmi:com:examples:Thermostat;1"
+const modelId = 'dtmi:com:examples:Thermostat;1'
 const connectionString = process.env.DEVICE_CONNECTION_STRING
 
 let currentTemp = 20
@@ -17,20 +17,20 @@ let targetTemp = 20
 let telemetryLoop = {}
 
 const propertyUpdateHandler = async (component, propertyName, reportedValue, desiredValue, version) => {
-  console.log('Received an update for ' + propertyName + ': ' + JSON.stringify(desiredValue));
+  console.log('Received an update for ' + propertyName + ': ' + JSON.stringify(desiredValue))
   targetTemp = parseFloat(JSON.stringify(desiredValue))
   adjustTemp(targetTemp)
   await digitalTwinClient.report(component, { [propertyName]: desiredValue }, {
     code: 200,
     description: 'helpful descriptive text',
     version: version
-  });
-  console.log('updated the property');
-};
+  })
+  console.log('updated the property')
+}
 
 const commandHandler = async (request, response) => {
-  console.log('received command: ' + request.commandName + ' for component: ' + request.componentName);
-  if (request.commandName==='reboot') {
+  console.log('received command: ' + request.commandName + ' for component: ' + request.componentName)
+  if (request.commandName === 'reboot') {
     clearInterval(telemetryLoop)
     console.log('rebooting')
     for (let index = 0; index < 10; index++) {
@@ -40,9 +40,9 @@ const commandHandler = async (request, response) => {
     currentTemp = 20
     await startTelemetryLoop()
   }
-  response.acknowledge(200, 'helpful response text');
-  console.log('acknowledgement succeeded.');
-};
+  response.acknowledge(200, 'helpful response text')
+  console.log('acknowledgement succeeded.')
+}
 
 const digitalTwinClient = DigitalTwinClient.fromConnectionString(modelId, connectionString)
 
@@ -50,7 +50,6 @@ const tempSensor = new TemperatureSensor('tempSensor1', propertyUpdateHandler)
 const deviceInformation = new DeviceInformation('deviceInfo')
 const sdkInformation = new SdkInformation('sdkInfo')
 const diag = new Diagnostics('diag', commandHandler)
-
 
 const thisSdkInfo = {
   language: 'node',
@@ -66,33 +65,33 @@ const thisDeviceInfo = {
   processorArchitecture: os.arch(),
   processorManufacturer: 'Contoso Industries',
   totalStorage: 65000,
-  totalMemory: os.totalmem(),
+  totalMemory: os.totalmem()
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function sleep (ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 const adjustTemp = async (target) => {
-  let step = (parseFloat(target) - currentTemp) / 10
+  const step = (parseFloat(target) - currentTemp) / 10
   for (let index = 9; index >= 0; index--) {
     currentTemp = target - step * parseFloat(index)
-    console.log("updating current temp to " + currentTemp)
+    console.log('updating current temp to ' + currentTemp)
 
     await sleep(1000)
   }
 }
 
-const startTelemetryLoop = async() => {
+const startTelemetryLoop = async () => {
   telemetryLoop = setInterval(async () => {
-    if (currentTemp != targetTemp) {
-      console.log("sending temp " + currentTemp)
+    if (currentTemp !== targetTemp) {
+      console.log('sending temp ' + currentTemp)
       await digitalTwinClient.sendTelemetry(tempSensor, { temperature: currentTemp })
-      digitalTwinClient.report(tempSensor, {currentTemperature:currentTemp})
+      digitalTwinClient.report(tempSensor, { currentTemperature: currentTemp })
     } else {
-      console.log("CurrentTemp equals TargetTemp, not sending temp telemetry")
+      console.log('CurrentTemp equals TargetTemp, not sending temp telemetry')
     }
-    await digitalTwinClient.sendTelemetry(diag, { workingSet: os.freemem})
+    await digitalTwinClient.sendTelemetry(diag, { workingSet: os.freemem })
   }, 2000)
 }
 
@@ -102,9 +101,7 @@ const main = async () => {
   await digitalTwinClient.enablePropertyUpdates()
   await digitalTwinClient.report(deviceInformation, thisDeviceInfo)
   await digitalTwinClient.report(sdkInformation, thisSdkInfo)
-  await startTelemetryLoop();
+  await startTelemetryLoop()
 }
 
-main();
-
-
+main()

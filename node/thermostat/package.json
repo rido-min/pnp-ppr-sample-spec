@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node -r dotenv/config main.js"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +13,9 @@
     "azure-iot-device": "^1.14.0",
     "azure-iot-device-mqtt": "^1.13.0",
     "azure-iot-digitaltwins-device": "^1.0.0-pnp-refresh.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "standard": "^14.3.3"
   }
 }
