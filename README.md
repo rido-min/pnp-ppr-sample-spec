@@ -44,6 +44,7 @@ The tools are available as internal previews:
 
 - Azure IoT Explorer (available as private release in [YingXue/azure-iot-explorer/releases](https://github.com/YingXue/azure-iot-explorer/releases) )
 - VSCode extension for DTDL (availabe as a private release in [microsoft/vscode-azure-digital-twins/releases](https://github.com/microsoft/vscode-azure-digital-twins/releases) ). To install, download the `.vsix` file and install in VSCode as decribed [here](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix).
+- [IoT Model Repository](https://test.adb.trafficmanager.net/)
 
 ## Sample Solution  Features
 
@@ -74,12 +75,12 @@ This device simulates a temperature sensor, and uses the next interfaces:
 
 ```json
 {
-  "@id": "dtmi:com:examples:Thermostat;1",
+  "@id": "dtmi:com:example:Thermostat;1",
   "@type": "Interface",
   "contents": [
     {
       "@type": "Component",
-      "schema": "dtmi:com:examples:TemperatureSensor;1",
+      "schema": "dtmi:com:example:TemperatureSensor;1",
       "name": "tempSensor1"
     },
     {
@@ -94,7 +95,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
     },
     {
       "@type": "Component",
-      "schema": "dtmi:com:examples:diagnostics;1",
+      "schema": "dtmi:com:example:diagnostics;1",
       "name": "diag"
     }
   ]
@@ -110,7 +111,7 @@ This device simulates a temperature sensor, and uses the next interfaces:
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:examples:TemperatureSensor;1",
+  "@id": "dtmi:com:example:TemperatureSensor;1",
   "@type": "Interface",
   "displayName": "Temperature Sensor",
   "description": "Provides functionality to report temperature, and write property to set the target Temperature",
@@ -175,6 +176,8 @@ Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview devi
 
 Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=release-preview-refresh-iot-pnp) to build and run the existing [node device sample](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device)
 
+Follow the howto article [HOW-to guides: Manage Models in the repository](https://review.docs.microsoft.com/en-us/azure/iot-pnp/howto-manage-models?branch=pr-en-us-114283) to create, publish, share models and manage access.
+
 #### Interact with the devices using IoT Explorer
 
 1. Create a new hub instance following the instructions to use the canary environment (TBD)
@@ -219,6 +222,19 @@ The cloud application can be any application that connects to the Hub using the 
 - Update the ModelId from the device and see the new Id in the DigitalTwin
 - Update a desired property
 - Invoke a command
+
+### 4. IoT Model Repository 
+In the IoT Model Repository portal you can view and manage public and unpublished models. Admins can also manage the access for users.
+- View models
+- Create a model
+- Share a model
+- Publish a model
+- Manage user access
+
+#### Things to try 
+- Create your own AAD tenant by following the instructions [here](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-access-create-new-tenant) and add a user to that tenant. Login with the user in the model repo portal where you will see yourself as first tenant admin.
+- Try manage models and user access with your own tenant following the same steps in the howto-manamge-models article.
+
 
 ## Complete Solution
 
