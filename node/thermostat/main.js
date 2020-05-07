@@ -54,13 +54,13 @@ const diag = new Diagnostics('diag', commandHandler)
 
 const thisSdkInfo = {
   language: 'node',
-  version: '0.9.1-preview',
-  vendor: 'rido'
+  version: '1.0.0-pnp-refresh.0',
+  vendor: 'Microsoft'
 }
 
 const thisDeviceInfo = {
   manufacturer: 'Azure IoT Samples',
-  model: 'Thermostat.PnP-PPR',
+  model: 'Thermostat.PnP-PPR-Node',
   swVersion: '0.1',
   osName: os.platform(),
   processorArchitecture: os.arch(),
@@ -78,6 +78,7 @@ const adjustTemp = async (target) => {
   for (let index = 9; index >= 0; index--) {
     currentTemp = target - step * parseFloat(index)
     console.log("updating current temp to " + currentTemp)
+
     await sleep(1000)
   }
 }
@@ -87,6 +88,7 @@ const startTelemetryLoop = async() => {
     if (currentTemp != targetTemp) {
       console.log("sending temp " + currentTemp)
       await digitalTwinClient.sendTelemetry(tempSensor, { temperature: currentTemp })
+      digitalTwinClient.report(tempSensor, {currentTemperature:currentTemp})
     } else {
       console.log("CurrentTemp equals TargetTemp, not sending temp telemetry")
     }
@@ -100,6 +102,7 @@ const main = async () => {
   await digitalTwinClient.enablePropertyUpdates()
   await digitalTwinClient.report(deviceInformation, thisDeviceInfo)
   await digitalTwinClient.report(sdkInformation, thisSdkInfo)
+  await startTelemetryLoop();
 }
 
 main();
