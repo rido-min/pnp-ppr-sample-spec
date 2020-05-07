@@ -19,7 +19,7 @@ let telemetryLoop = {}
 const propertyUpdateHandler = async (component, propertyName, reportedValue, desiredValue, version) => {
   console.log('Received an update for ' + propertyName + ': ' + JSON.stringify(desiredValue))
   targetTemp = parseFloat(JSON.stringify(desiredValue))
-  adjustTemp(targetTemp)
+  await adjustTemp(targetTemp)
   await digitalTwinClient.report(component, { [propertyName]: desiredValue }, {
     code: 200,
     description: 'sucess',
@@ -31,17 +31,20 @@ const propertyUpdateHandler = async (component, propertyName, reportedValue, des
 const commandHandler = async (request, response) => {
   console.log('received command: ' + request.commandName + ' for component: ' + request.componentName)
   if (request.commandName === 'reboot') {
+    currentTemp = 0
+    targetTemp = 21
     clearInterval(telemetryLoop)
     console.log('rebooting')
     for (let index = 0; index < 10; index++) {
       console.log('.')
       await sleep(300)
     }
-    currentTemp = 20
     await startTelemetryLoop()
+    response.acknowledge(200, 'Command processed successfully')
+    console.log('acknowledgement succeeded.')
+  } else {
+    response.acknowledge(404, `Unknown command: ${request.commandName}`)
   }
-  response.acknowledge(200, 'helpful response text')
-  console.log('acknowledgement succeeded.')
 }
 
 const digitalTwinClient = DigitalTwinClient.fromConnectionString(modelId, connectionString)
