@@ -39,12 +39,14 @@ This release is supported by the next SDK versions
 
 - azure-iot-sdk-c [public-preview](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
 - NPM package for node [azure-iot-digitaltwins-device@1.0.0-pnp-refresh.0](https://www.npmjs.com/package/azure-iot-digitaltwins-device/v/1.0.0-pnp-refresh.0)
+- Python [Python DEvice SDK for the BugBash](https://aka.ms/PythonDevicePnP0508) 
 - azure-iot-device [TBD](https://pipy.com/) pip package
 
 ##### Service SDK
 
 - NPM package for node [azure-iot-digitaltwins-service@1.0.0-pnp-refresh.0](https://www.npmjs.com/package/azure-iot-digitaltwins-service/v/1.0.0-pnp-refresh.0)
-- PIP package for python TBD
+- Python [Python Service SDK for the BugBash](https://aka.ms/PythonServicePnP0508) 
+- PIP package for python TBD for PPR
 
 #### PnP related tools
 
