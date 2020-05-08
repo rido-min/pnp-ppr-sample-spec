@@ -1,7 +1,5 @@
 <!-- markdownlint-disable MD033 -->
-# Plug and Play samples spec for May 2020 release
-
-> This spec describes the e2e sample we will use for the next BugBash, and eventually will be published as a tutorial in docs.ms.com.
+# Plug and Play BugBash instructions for May2020 release
 
 ## Intro
 
@@ -13,15 +11,25 @@ Devices connected to IoT Hub can de described with DTDL, in terms of:
 - Commands (Using the Hub Direct Methods feature)
 - Telemetry (processed through EventHub)
 
-Review the docs in the private staging environment [IoT Plug and Play Preview Documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-114283).
+Review the docs in the private staging environment [IoT Plug and Play Preview Documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-114283)
 
-### Private environments, and preview SDKs
+### BugBash support and feedback
 
-As the time of writing the version of IoT Hub supporting PnP BugBash 2, 08 May2020 release is only deployed to a private hub instance:
+- The teams channel [PnP Public Preview BugBash](https://teams.microsoft.com/l/channel/19%3a0b9d0f166a3d41c69ce90fcca7631962%40thread.skype/PnP%2520Public%2520Preview?groupId=dcc1ac84-f476-4c96-8034-b2d77e54c8bf&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47). Will have team members answering questions during the BugBash.
+- If you have bugs or feature request, please use this [Bug Template](https://msazure.visualstudio.com/One/_workitems/create/Bug?templateId=a05dbe62-eb63-4028-9ce0-252c552872f3&ownerId=1e65a829-00c0-4dc9-8088-d41678a0d033). You can query existing bugs in this [PnP BugBash Query](https://msazure.visualstudio.com/One/_queries/query-edit/71cca2fe-63bd-4916-84f6-937f0dfaa698/?action=new)
+- For feedback related to the docs, you can use this [azure docs PR](https://github.com/MicrosoftDocs/azure-docs-pr/pull/114283)
 
-```js
-<Connection Strings for IoT Hub>
-```
+
+## Required environments, SDKs and tools
+
+### IoT Hub
+
+The required hub version is only  available in the canary environment, to create a new hub follow these steps:
+
+- Request access to the `IOTPNP_TEST_BY_MAIN` subscription, via the Teams channel
+- Create a new IoT Hub under this subscription, wihtin the resource group `BugBash` in one of the supported regions: `Central US EUAP` or `East US EUAP`
+
+> Note. Make sure you get the IoT Hub connection string to be able to configure IoT explorer.
 
 #### SDK support
 
@@ -52,7 +60,7 @@ The solution to build includes 1 device connected to Azure IoT Hub and a server 
 
 >Note: Central does not supoprt DTLD v2. It's out of scope for this BugBash.
 
-PaaS solutions require some kind of computing resource to connect to the service endpoints, usually REST, by using the Service Client SDKs.
+PaaS solutions require some kind of computing resource to connect to the service REST endpoints by using the Service Client SDKs.
 
 This BugBash uses the following Models to describe the device capabilities.
 
@@ -170,7 +178,11 @@ This is an application that connects to IoT Hub using the service SDK offering t
 
 ## Scenario Steps
 
-### 1. Review the existing samples
+### 1. Review the existing samples and docs
+
+If you need to get familiar with PnP concepts, take a time to familiarize yourself by reading the staging docs available in [review.docs.microsoft.com/azure/iot-pnp](https://review.docs.microsoft.com/azure/iot-pnp?branch=pr-en-us-114283)
+
+To learn how to create a PnP device we have tutorials for C, Node and Python:
 
 Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=pr-en-us-114283) to build and run the existing [C device sample](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples)
 
@@ -182,7 +194,7 @@ Follow the howto article [HOW-to guides: Manage Models in the repository](https:
 
 #### Interact with the devices using IoT Explorer
 
-1. Create a new hub instance following the instructions to use the canary environment (TBD)
+1. Create a new hub instance following the instructions to use the canary environment
 2. Install the private version of IoT Explorer
 3. Create a device registration in IoT explorer and get the device connection string.
 4. Use the connection string to connect the sample devices to hub
