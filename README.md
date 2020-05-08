@@ -13,7 +13,7 @@ Devices connected to IoT Hub can de described with DTDL, in terms of:
 - Commands (Using the Hub Direct Methods feature)
 - Telemetry (processed through EventHub)
 
-Review the docs [IoT Plug and Play Preview Documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=release-preview-refresh-iot-pnp).
+Review the docs in the private staging environment [IoT Plug and Play Preview Documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-114283).
 
 ### Private environments, and preview SDKs
 
@@ -27,16 +27,16 @@ As the time of writing the version of IoT Hub supporting PnP BugBash 2, 08 May20
 
 This release is supported by the next SDK versions
 
-Device SDK
+##### Device SDK
 
-- azure-iot-sdk-c [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
-- azure-iot-sdk-node [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp) branch
-- azure-iot-sdk-python [digitaltwins-preview](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview) branch
+- azure-iot-sdk-c [public-preview](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) branch
+- NPM package for node [azure-iot-digitaltwins-device@1.0.0-pnp-refresh.0](https://www.npmjs.com/package/azure-iot-digitaltwins-device/v/1.0.0-pnp-refresh.0)
+- azure-iot-device [TBD](https://pipy.com/) pip package
 
-Service SDK
+##### Service SDK
 
-- azure-iot-sdk-node [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp) branch
-- azure-iot-sdk-python [digitaltwins-preview](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview) branch
+- NPM package for node [azure-iot-digitaltwins-service@1.0.0-pnp-refresh.0](https://www.npmjs.com/package/azure-iot-digitaltwins-service/v/1.0.0-pnp-refresh.0)
+- PIP package for python TBD
 
 #### PnP related tools
 
@@ -48,13 +48,13 @@ The tools are available as internal previews:
 
 ## Sample Solution  Features
 
-The solution to build includes 1 device connected to Azure IoT using Central (SaaS) or Hub (PaaS).
+The solution to build includes 1 device connected to Azure IoT Hub and a server side application that can interact with the devices using the IoT Hub server APIs.
 
->Note: SaaS solutions require to configure the Central application creating device templates based on the DTDL models. Central does not supoprt DTLD v2. It's out of scope for this BugBash.
+>Note: Central does not supoprt DTLD v2. It's out of scope for this BugBash.
 
 PaaS solutions require some kind of computing resource to connect to the service endpoints, usually REST, by using the Service Client SDKs.
 
-This BugBash uses the following Models to describe the devices features to implement.
+This BugBash uses the following Models to describe the device capabilities.
 
 We we'll use two common interfaces:
 
@@ -172,9 +172,9 @@ This is an application that connects to IoT Hub using the service SDK offering t
 
 ### 1. Review the existing samples
 
-Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=release-preview-refresh-iot-pnp) to build and run the existing [C device sample](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples)
+Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=pr-en-us-114283) to build and run the existing [C device sample](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples)
 
-Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=release-preview-refresh-iot-pnp) to build and run the existing [node device sample](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device)
+Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=pr-en-us-114283) to build and run the existing [node device sample](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device)
 
 Follow the howto article [HOW-to guides: Manage Models in the repository](https://review.docs.microsoft.com/azure/iot-pnp/howto-manage-models?branch=pr-en-us-114283) to create, publish, share models and manage access.
 
@@ -194,13 +194,19 @@ Follow the howto article [HOW-to guides: Manage Models in the repository](https:
 
 Based on the existing samples, create a new device to implement the [Themorstat Model](./models/Thermostat.json).
 
-The device should handle the property update for `targetTemperature` and gradually increase/decrease the value of the telemetry being sent until the targetTemperature is set.
+The device should imlement the next interfaces:
+
+- The `Diagnostics` interface to  handle the `reboot` command and send the `workingset` as telemetry
+- The `Temperature Sensor` to  handle the property updates for `targetTemperature` and gradually increase/decrease the value of the `currentTemperature` being sent until the targetTemperature is set. This value will be updated using a reported property and telemetry.
+- The `DeviceInformation` and `SDKInformation` to report custom values
+
+>Note: You can reuse the implementation of DeviceInformation and SDKInformation from the existing samples
 
 Validate the device with Azure IoT Explorer
 
 #### Things to try in the device app
 
-- Add Telemetry properties to the model and device code
+- Add Telemetry properties to the model and implement the device code
 - Combine telemetry messages with more than one property
 - Add a new command with complex types as input or output parameters
 - Update a property when the device is offline and verify it's applied when the device reconnects.
@@ -211,6 +217,7 @@ The cloud application can be any application that connects to the Hub using the 
 
 - List Devices. Use the Registry api to get a list of devices
 - Detect Model Id. Use the DigitalTwins api to get the ModelId
+- Interact with the device by updating the `targetTemperature` property and invoking the `reboot` command
 - Resolve Model. Use the repository API to query for the ModelId
 - Ad-Hoc UI. Create a custom UI for known models.
 - Dynamic UI. Parse the interface contents to render a UI to interact with the device.
@@ -220,8 +227,7 @@ The cloud application can be any application that connects to the Hub using the 
 - Query the Device Twin
 - Query the Digital Twin
 - Update the ModelId from the device and see the new Id in the DigitalTwin
-- Update a desired property
-- Invoke a command
+- For errors by changing the names of the properties/commands and review the error messages produced by the SDKs
 
 ### 4. IoT Model Repository
 
