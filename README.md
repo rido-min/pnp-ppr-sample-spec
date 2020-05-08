@@ -174,9 +174,11 @@ This is an application that connects to IoT Hub using the service SDK offering t
 
 Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=release-preview-refresh-iot-pnp) to build and run the existing [C device sample](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples)
 
-Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=release-preview-refresh-iot-pnp) to build and run the existing [node device sample](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device)
+Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=release-preview-refresh-iot-pnp) to build and run the existing [node device sample](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device/javascript)
 
-Follow the howto article [HOW-to guides: Manage Models in the repository](https://review.docs.microsoft.com/azure/iot-pnp/howto-manage-models?branch=pr-en-us-114283) to create, publish, share models and manage access.
+Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Python)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-python?branch=release-preview-refresh-iot-pnp) to build and run the existing [Python device sample](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview/azure-iot-device/samples/pnp)
+
+Follow the how to article [HOW-to guides: Manage Models in the repository](https://review.docs.microsoft.com/azure/iot-pnp/howto-manage-models?branch=pr-en-us-114283) to create, publish, share models and manage access.
 
 #### Interact with the devices using IoT Explorer
 
