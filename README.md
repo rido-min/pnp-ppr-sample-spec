@@ -37,7 +37,7 @@ This release is supported by the next SDK versions
 
 ##### Device SDK
 
-- azure-iot-sdk-c [public-preview](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) branch
+- azure-iot-sdk-c [public-preview](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
 - NPM package for node [azure-iot-digitaltwins-device@1.0.0-pnp-refresh.0](https://www.npmjs.com/package/azure-iot-digitaltwins-device/v/1.0.0-pnp-refresh.0)
 - azure-iot-device [TBD](https://pipy.com/) pip package
 
