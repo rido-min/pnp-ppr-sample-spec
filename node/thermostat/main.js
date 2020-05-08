@@ -22,22 +22,22 @@ const propertyUpdateHandler = async (component, propertyName, reportedValue, des
   await adjustTemp(targetTemp)
   await digitalTwinClient.report(component, { [propertyName]: desiredValue }, {
     code: 200,
-    description: 'sucess',
+    description: 'success',
     version: version
   })
   console.log('updated the property')
 }
 
 const commandHandler = async (request, response) => {
-  console.log('received command: ' + request.commandName + ' for component: ' + request.componentName)
+  console.log('received command: ' + request.commandName + ' for component: ' + request.componentName + ' with payload ' + request.payload)
   if (request.commandName === 'reboot') {
-    currentTemp = 0
+    // currentTemp = 0
     targetTemp = 21
+    const delay = parseInt(request.payload)
     clearInterval(telemetryLoop)
-    console.log('rebooting')
-    for (let index = 0; index < 10; index++) {
-      console.log('.')
-      await sleep(300)
+    for (let index = 0; index < delay; index++) {
+      console.log('==================> REBOOT COMMAND RECEIVED <=================')
+      await sleep(index * 1000)
     }
     await startTelemetryLoop()
     response.acknowledge(200, 'Command processed successfully')
