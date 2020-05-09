@@ -1,0 +1,89 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:ClimateSensor;1",
+  "@type": "Interface",
+  "displayName": "Climate Sensor",
+  "description": "Provides functionality to report temperature, humidity, pressure",
+  "comment": "Requires temperature, humidity and pressure sensors.",
+  "contents": [
+    {
+      "@type": "Property",
+      "displayName": "Update interval",
+      "description": "Interval of telemetry updates in seconds",
+      "name": "updateInterval",
+      "writable": true,
+      "schema": "integer"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Temperature"
+      ],
+      "description": "Current temperature on the device",
+      "displayName": "Temperature",
+      "name": "temperature",
+      "schema": "double",
+      "unit": "degreeCelsius"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Humidity"
+      ],
+      "description": "Current humidity on the device",
+      "displayName": "Humidity",
+      "name": "humidity",
+      "schema": "double",
+      "unit": "gramPerCubicMetre"
+    },
+    {
+      "@type": [
+        "Telemetry",
+        "Pressure"
+      ],
+      "description": "Current pressure on the device",
+      "displayName": "Pressure",
+      "name": "pressure",
+      "schema": "double",
+      "unit": "bar"
+    },
+    {
+      "@type": "Command",
+      "description": "Get a report with summary values from the past N days.",
+      "name": "GetClimateSummary",
+      "commandType": "synchronous",
+      "request": {
+        "name": "numberOfDays",
+        "schema": "integer"
+      },
+      "response": {
+        "name": "climateSummaryResponse",
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "SummaryText",
+              "schema": "string"
+            },
+            {
+              "name": "highTemp",
+              "schema": "double"
+            },
+            {
+              "name": "lowTemp",
+              "schema": "double"
+            },
+            {
+              "name": "avgTemp",
+              "schema": "double"
+            },
+            {
+              "name": "numberOfSamples",
+              "schema": "float"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

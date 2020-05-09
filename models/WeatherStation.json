@@ -1,0 +1,33 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:WeatherStation;1",
+  "@type": "Interface",
+  "displayName": "Sample Weather Station with interior and exterior sensors",
+  "contents": [
+    {
+      "@type": "Component",
+      "schema": "dtmi:com:example:ClimateSensor;1",
+      "name": "interior"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:com:example:ClimateSensor;1",
+      "name": "exterior"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+      "name": "deviceInfo"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:Client:SDKInformation;1",
+      "name": "sdkInfo"
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:com:example:Diagnostics;1",
+      "name": "diag"
+    }
+  ]
+}
