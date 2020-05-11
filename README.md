@@ -3,26 +3,37 @@
 
 ## Intro
 
-This bug bash explores the new IoT Hub features to support the Plug and Play May 2020 release. Using a  DTDL v2 Model to describe a device with one  sensor interface that sends telemetry, accepts commands and reports properties. The sample is based on a device simulator connected to IoT Hub with a client SDK and can be managed using the service SDKs  to read telemetry and interact with properties and commands.
+This internal bug bash explores the new IoT Hub features to support the Plug and Play May 2020 release. Using a  DTDL v2 Model to describe a device with one  sensor interface that sends telemetry, accepts commands and reports properties. The sample is based on a device simulator connected to IoT Hub with a client SDK and can be managed using the service SDKs  to read telemetry and interact with properties and commands.
 
 Review the docs in the private staging environment [IoT Plug and Play Preview Documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-114283)
 
-[DTDL v2 Spec](https://microsoft.sharepoint.com/:w:/t/Azure_IoT/IoTPlat/EaotICYXiQVOh_xnBggJwqMBMKGoOyMzV1qFYsOdcyvOVw?e=VyG0QN) (internal)
+The [DTDL v2 Spec](https://microsoft.sharepoint.com/:w:/t/Azure_IoT/IoTPlat/EaotICYXiQVOh_xnBggJwqMBMKGoOyMzV1qFYsOdcyvOVw?e=VyG0QN) can be used as a reference for the language. An easiest way to get started with the language is by looking at the [sample models](./models) created for this Bug Bash.
 
 ### BugBash support and feedback
 
 - Use the teams channel [PnP Public Preview BugBash](https://teams.microsoft.com/l/channel/19%3a0b9d0f166a3d41c69ce90fcca7631962%40thread.skype/PnP%2520Public%2520Preview?groupId=dcc1ac84-f476-4c96-8034-b2d77e54c8bf&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47) to ask for help. There will be team members answering questions during the BugBash.
 - If you have bugs or feature request, please use this [Bug Template](https://msazure.visualstudio.com/One/_workitems/create/Bug?templateId=a05dbe62-eb63-4028-9ce0-252c552872f3&ownerId=1e65a829-00c0-4dc9-8088-d41678a0d033). You can query existing bugs in this [PnP BugBash Query](https://msazure.visualstudio.com/One/_queries/query-edit/71cca2fe-63bd-4916-84f6-937f0dfaa698/?action=new)
-- For feedback related to the docsn use this [azure docs PR](https://github.com/MicrosoftDocs/azure-docs-pr/pull/114283)
+- For feedback related to the docs use this [azure docs PR](https://github.com/MicrosoftDocs/azure-docs-pr/pull/114283)
 
 ## Required environments, SDKs and tools
 
 ### IoT Hub
 
-The required hub version is only  available in the canary environment, to create a new hub follow these steps:
+The required hub version is only  available in the canary environment, to create a new hub you can follow the instructions from the docs but using the **subscription** and **regions** described below:
 
 - Request access to the `IOTPNP_TEST_BY_MAIN` subscription, via the Teams channel
 - Create a new IoT Hub under this subscription, wihtin the resource group `BugBash` in one of the supported regions: `Central US EUAP` or `East US EUAP`
+
+To create the hub using the `az` CLI replace the hubname and run the script below:
+
+```bash
+az extension add --name azure-iot
+az login
+az account set -s IOTPNP_TEST_BY_MAIN
+az az iot hub create --name <alias-hub-name> --resource-group BugBash
+```
+
+To create the hub from the portal make sure you select the right subscription, region and resource group.
 
 > Note. Make sure you get the IoT Hub connection string to be able to configure IoT explorer.
 
@@ -32,7 +43,7 @@ This release is supported by the next SDK versions
 
 ##### Device SDK
 
-- azure-iot-sdk-c [public-preview](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
+- azure-iot-sdk-c [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
 - NPM package for node [azure-iot-digitaltwins-device@1.0.0-pnp-refresh.0](https://www.npmjs.com/package/azure-iot-digitaltwins-device/v/1.0.0-pnp-refresh.0)
 - Python [Python Device SDK for the BugBash](https://aka.ms/PythonDevicePnP0508) 
 
@@ -72,7 +83,7 @@ And a custom interface to monitor the memory and enable reboots:
 
 ### Thermostat Device
 
-This device simulates a temperature sensor, and uses the next interfaces:
+This device implements the Thermostat model that is composed by 4 interfaces, one of which is the TemperatureSensor.
 
 <details>
 
@@ -177,7 +188,7 @@ This is an application that connects to IoT Hub using the service SDK offering t
 
 ### 1. Review the existing samples and docs
 
-If you need to get familiar with PnP concepts, take a minute to familiarize yourself by reading the staging docs available in [review.docs.microsoft.com/azure/iot-pnp](https://review.docs.microsoft.com/azure/iot-pnp?branch=pr-en-us-114283)
+If you need to learn basic PnP concepts take a minute to familiarize yourself by reading the staging docs available in [review.docs.microsoft.com/azure/iot-pnp](https://review.docs.microsoft.com/azure/iot-pnp?branch=pr-en-us-114283)
 
 To learn how to create a PnP device we have tutorials for C, Node and Python:
 
@@ -207,15 +218,14 @@ Based on the existing samples, create a new device to implement the [Themorstat 
 
 The device should implement the next interfaces:
 
+- Update reported properties in `DeviceInformation` and `SDKInformation` (you can reuse the existing implementations from the samples)
 - Handle the `reboot` command and send the `workingset` as telemetry in the `Diagnostics` interface
 - Handle desired `targetTemperature` property updates in the `Temperature Sensor` interface and gradually increase/decrease the value of the `currentTemperature`
 - Send the `temperature` telemetry message
 
-- Update reported properties in `DeviceInformation` and `SDKInformation`
+Validate the device with Azure IoT Explorer.
 
->Note: You can reuse the implementation of DeviceInformation and SDKInformation from the existing samples
-
-Validate the device with Azure IoT Explorer
+>Note: You dont need to complete all the interfaces to start the validation, IoT Explorer can help to validate properties, telemetry or commands one at a time.
 
 #### Things to try in the device app
 
