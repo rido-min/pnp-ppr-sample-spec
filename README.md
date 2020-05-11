@@ -58,9 +58,9 @@ The tools are available as internal previews:
 
 - [IoT Model Repository](https://test.iotmodels.trafficmanager.net/)
 - Azure IoT Explorer (available as private release in [YingXue/azure-iot-explorer/releases](https://github.com/YingXue/azure-iot-explorer/releases) )
-- VSCode extension for DTDL (availabe as a private release in [microsoft/vscode-azure-digital-twins/releases](https://github.com/microsoft/vscode-azure-digital-twins/releases) ). To install, download the `.vsix` file and install in VSCode as decribed [here](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix).
+- VSCode extension for DTDL (availabe as a private release in the Marketplace as[VDT Project for RC](https://marketplace.visualstudio.com/items?itemName=IoTDevExBuild.test-vdt-project) ).
 
->Note: The VSCode extension does not support semantic types in this release. Any semantic type will be ignored (not validated) and there is no intellisense support.
+>Note: The VSCode extension does not support semantic types in this release. Any semantic type will be ignored (not validated) and there is no intellisense support for these types.
 
 ## Sample Solution  Features
 
