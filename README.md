@@ -5,7 +5,7 @@
 
 This internal bug bash explores the new IoT Hub features to support the Plug and Play May 2020 release. Using a  DTDL v2 Model to describe a device with one  sensor interface that sends telemetry, accepts commands and reports properties. The sample is based on a device simulator connected to IoT Hub with a client SDK and can be managed using the service SDKs  to read telemetry and interact with properties and commands.
 
-Review the docs in the private staging environment [IoT Plug and Play Preview Documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-114283)
+Review the docs in the private staging environment [IoT Plug and Play Preview Documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-114965)
 
 The [DTDL v2 Spec](https://microsoft.sharepoint.com/:w:/t/Azure_IoT/IoTPlat/EaotICYXiQVOh_xnBggJwqMBMKGoOyMzV1qFYsOdcyvOVw?e=VyG0QN) can be used as a reference for the language. An easiest way to get started with the language is by looking at the [sample models](./models) created for this Bug Bash.
 
@@ -13,7 +13,7 @@ The [DTDL v2 Spec](https://microsoft.sharepoint.com/:w:/t/Azure_IoT/IoTPlat/Eaot
 
 - Use the teams channel [PnP Public Preview BugBash](https://teams.microsoft.com/l/channel/19%3a0b9d0f166a3d41c69ce90fcca7631962%40thread.skype/PnP%2520Public%2520Preview?groupId=dcc1ac84-f476-4c96-8034-b2d77e54c8bf&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47) to ask for help. There will be team members answering questions during the BugBash.
 - If you have bugs or feature request, please use this [Bug Template](https://msazure.visualstudio.com/One/_workitems/create/Bug?templateId=a05dbe62-eb63-4028-9ce0-252c552872f3&ownerId=1e65a829-00c0-4dc9-8088-d41678a0d033). You can query existing bugs in this [PnP BugBash Query](https://msazure.visualstudio.com/One/_queries/query-edit/71cca2fe-63bd-4916-84f6-937f0dfaa698/?action=new)
-- For feedback related to the docs use this [azure docs PR](https://github.com/MicrosoftDocs/azure-docs-pr/pull/114283)
+- For feedback related to the docs use this [azure docs PR](https://github.com/MicrosoftDocs/azure-docs-pr/pull/114965)
 
 ## Required environments, SDKs and tools
 
@@ -45,7 +45,7 @@ This release is supported by the next SDK versions
 
 - azure-iot-sdk-c [public-preview-pnp](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp) branch
 - NPM package for node [azure-iot-digitaltwins-device@1.0.0-pnp-refresh.0](https://www.npmjs.com/package/azure-iot-digitaltwins-device/v/1.0.0-pnp-refresh.0)
-- Python [Python Device SDK for the BugBash](https://aka.ms/PythonDevicePnP0508) 
+- Python [Python Device SDK for the BugBash](https://aka.ms/PythonDevicePnP0508)
 
 ##### Service SDK
 
@@ -188,17 +188,17 @@ This is an application that connects to IoT Hub using the service SDK offering t
 
 ### 1. Review the existing samples and docs
 
-If you need to learn basic PnP concepts take a minute to familiarize yourself by reading the staging docs available in [review.docs.microsoft.com/azure/iot-pnp](https://review.docs.microsoft.com/azure/iot-pnp?branch=pr-en-us-114283)
+If you need to learn basic PnP concepts take a minute to familiarize yourself by reading the staging docs available in [review.docs.microsoft.com/azure/iot-pnp](https://review.docs.microsoft.com/azure/iot-pnp?branch=pr-en-us-114965)
 
 To learn how to create a PnP device we have tutorials for C, Node and Python:
 
-- Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=pr-en-us-114283) to build and run the existing [C device sample](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples)
+- Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application running on Linux or Windows to IoT Hub (C)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=pr-en-us-114965) to build and run the existing [C device sample](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples)
 
-- Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=pr-en-us-114283) to build and run the existing [node device sample](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device/javascript)
+- Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Node.js)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-node?branch=pr-en-us-114965) to build and run the existing [node device sample](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/device/javascript)
 
-- Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Python)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-python?branch=pr-en-us-114283) to build and run the existing [Python device sample](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview/azure-iot-device/samples/pnp)
+- Follow the tutorial [Quickstart: Connect a sample IoT Plug and Play Preview device application to IoT Hub (Python)](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-python?branch=pr-en-us-114965) to build and run the existing [Python device sample](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview/azure-iot-device/samples/pnp)
 
-- Follow the howto article [HOW-to guides: Manage Models in the repository](https://review.docs.microsoft.com/azure/iot-pnp/howto-manage-models?branch=pr-en-us-114283) to create, publish, share models and manage access.
+- Follow the howto article [HOW-to guides: Manage Models in the repository](https://review.docs.microsoft.com/azure/iot-pnp/howto-manage-models?branch=pr-en-us-114965) to create, publish, share models and manage access.
 
 #### Interact with the devices using IoT Explorer
 
