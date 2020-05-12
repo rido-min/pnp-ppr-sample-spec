@@ -17,7 +17,6 @@
         "description": "This command will reboot the device application.",
         "displayName": "Reboot",
         "name": "reboot",
-        "commandType": "synchronous",
         "request": {
           "name": "delay",
           "schema": "integer"
