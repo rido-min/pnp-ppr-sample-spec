@@ -1,0 +1,21 @@
+{
+  "name": "thermostat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node -r dotenv/config main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "azure-iot-device": "^1.14.0",
+    "azure-iot-device-mqtt": "^1.13.0",
+    "azure-iot-digitaltwins-device": "^1.0.0-pnp-refresh.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "standard": "^14.3.3"
+  }
+}
