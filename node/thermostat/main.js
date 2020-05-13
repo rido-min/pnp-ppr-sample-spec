@@ -76,11 +76,11 @@ const sleep = (ms) => {
 }
 
 const adjustTemp = async (target) => {
-  const step = (parseFloat(target) - currentTemp) / 10
+  const step = (target - currentTemp) / 10
   for (let index = 9; index >= 0; index--) {
+    await sleep(1000)
     currentTemp = target - step * parseFloat(index)
     console.log('updating current temp to ' + currentTemp)
-    await sleep(1000)
   }
 }
 
@@ -93,7 +93,7 @@ const startTelemetryLoop = async () => {
     } else {
       console.log('CurrentTemp equals TargetTemp, not sending temp telemetry')
     }
-    await digitalTwinClient.sendTelemetry(diag, { workingSet: os.freemem })
+    await digitalTwinClient.sendTelemetry(diag, { workingset: os.freemem() })
   }, 2000)
 }
 
