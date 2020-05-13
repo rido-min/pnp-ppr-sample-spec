@@ -22,7 +22,9 @@ The [DTDL v2 Spec](https://microsoft.sharepoint.com/:w:/t/Azure_IoT/IoTPlat/Eaot
 The required hub version is only  available in the canary environment, to create a new hub you can follow the instructions from the docs but using the **subscription** and **regions** described below:
 
 - Request access to the `IOTPNP_TEST_BY_MAIN` subscription, via the Teams channel
-- Create a new IoT Hub under this subscription, wihtin the resource group `BugBash` in one of the supported regions: `Central US EUAP` or `East US EUAP`
+- Create a new IoT Hub under this subscription, wihtin the resource group `BugBash` in one of the supported regions: `Central US EUAP`
+
+>NOTE: All hubs created in this subscription will be removed after the bug bash.
 
 To create the hub using the `az` CLI replace the hubname and run the script below:
 
