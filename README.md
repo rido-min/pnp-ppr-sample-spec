@@ -56,7 +56,7 @@ This release is supported by the next SDK versions
 
 The tools are available as internal previews:
 
-- [IoT Model Repository](https://test.iotmodels.trafficmanager.net/)
+- [IoT Model Repository](https://canary.iotmodels.trafficmanager.net)
 - Azure IoT Explorer (available as private release in [YingXue/azure-iot-explorer/releases](https://github.com/YingXue/azure-iot-explorer/releases) )
 - VSCode extension for DTDL (availabe as a private release in the Marketplace as[VDT Project for RC](https://marketplace.visualstudio.com/items?itemName=IoTDevExBuild.test-vdt-project) ).
 
