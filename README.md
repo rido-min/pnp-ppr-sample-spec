@@ -200,6 +200,8 @@ To learn how to create a PnP device we have tutorials for C, Node and Python:
 
 - Follow the howto article [HOW-to guides: Manage Models in the repository](https://review.docs.microsoft.com/azure/iot-pnp/howto-manage-models?branch=pr-en-us-114965) to create, publish, share models and manage access.
 
+- Follow the howto article [How-to: Interact with an IoT Plug and Play Preview device that's connected to your solution]( https://review.docs.microsoft.com/en-us/azure/iot-pnp/howto-connect-pnp-device-solution?branch=pr-en-us-114965) to create a digital twin route and recieve the digital twin change notifications.
+
 #### Interact with the devices using IoT Explorer
 
 1. Create a new hub instance following the instructions to use the canary environment
@@ -266,6 +268,11 @@ In the IoT Model Repository portal you can view and manage public and unpublishe
 
 - Create your own AAD tenant by following the instructions [here](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant) and add a user to that tenant. Login with the user in the model repo portal where you will see yourself as first tenant admin.
 - Try manage models and user access with your own tenant following the same steps in the howto-manamge-models article.
+
+### 5. Digital Twin Change Notification
+Follow the article to set up the route of the digital twin change event, and you will recieve the change event in your selected enpoint when 
+- First time discovery completes successfully
+- Update a property
 
 ## Complete Solution
 
