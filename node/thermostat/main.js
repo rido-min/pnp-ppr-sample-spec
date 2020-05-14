@@ -77,10 +77,10 @@ const sleep = (ms) => {
 
 const adjustTemp = async (target) => {
   const step = (target - currentTemp) / 10
-  for (let index = 9; index >= 0; index--) {
-    await sleep(1000)
-    currentTemp = target - step * parseFloat(index)
+  for await (const index of [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]) {
     console.log('updating current temp to ' + currentTemp)
+    currentTemp = target - step * parseFloat(index)
+    await sleep(1000)
   }
 }
 
