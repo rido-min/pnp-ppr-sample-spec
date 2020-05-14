@@ -32,7 +32,7 @@ To create the hub using the `az` CLI replace the hubname and run the script belo
 az extension add --name azure-iot
 az login
 az account set -s IOTPNP_TEST_BY_MAIN
-az az iot hub create --name <alias-hub-name> --resource-group BugBash
+az iot hub create --resource-group BugBash --sku S1 --location centraluseuap --partition-count 4 --name <alias-hub-name>
 ```
 
 To create the hub from the portal make sure you select the right subscription, region and resource group.
