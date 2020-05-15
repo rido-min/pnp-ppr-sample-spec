@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "nodemon -r dotenv/config server.js"
+=======
+    "start": "nodemon -r dotenv/config console-admin.js"
+>>>>>>> team-review
   },
   "keywords": [],
   "author": "",
