@@ -22,7 +22,9 @@ The [DTDL v2 Spec](https://microsoft.sharepoint.com/:w:/t/Azure_IoT/IoTPlat/Eaot
 The required hub version is only  available in the canary environment, to create a new hub you can follow the instructions from the docs but using the **subscription** and **regions** described below:
 
 - Request access to the `IOTPNP_TEST_BY_MAIN` subscription, via the Teams channel
-- Create a new IoT Hub under this subscription, wihtin the resource group `BugBash` in one of the supported regions: `Central US EUAP` or `East US EUAP`
+- Create a new IoT Hub under this subscription, wihtin the resource group `BugBash` in one of the supported regions: `Central US EUAP` or `East US 2 EUAP`
+
+>NOTE: All hubs created in this subscription will be removed after the bug bash.
 
 To create the hub using the `az` CLI replace the hubname and run the script below:
 
@@ -30,7 +32,7 @@ To create the hub using the `az` CLI replace the hubname and run the script belo
 az extension add --name azure-iot
 az login
 az account set -s IOTPNP_TEST_BY_MAIN
-az az iot hub create --name <alias-hub-name> --resource-group BugBash
+az iot hub create --resource-group BugBash --sku S1 --location centraluseuap --partition-count 4 --name <alias-hub-name>
 ```
 
 To create the hub from the portal make sure you select the right subscription, region and resource group.
@@ -57,6 +59,7 @@ This release is supported by the next SDK versions
 The tools are available as internal previews:
 
 - [IoT Model Repository](https://canary.iotmodels.trafficmanager.net)
+- Azure IoT Explorer (available as private release in [YingXue/azure-iot-explorer](https://github.com/YingXue/azure-iot-explorer/releases/tag/0.11.0) )
 - Azure IoT Explorer (available as private release in [YingXue/azure-iot-explorer/releases](https://github.com/YingXue/azure-iot-explorer/releases) )
 - VSCode extension for DTDL (availabe as a private release in the Marketplace as[VDT Project for RC](https://marketplace.visualstudio.com/items?itemName=IoTDevExBuild.test-vdt-project) ).
 
@@ -200,7 +203,7 @@ To learn how to create a PnP device we have tutorials for C, Node and Python:
 
 - Follow the howto article [HOW-to guides: Manage Models in the repository](https://review.docs.microsoft.com/azure/iot-pnp/howto-manage-models?branch=pr-en-us-114965) to create, publish, share models and manage access.
 
-- Follow the howto article [How-to: Interact with an IoT Plug and Play Preview device that's connected to your solution]( https://review.docs.microsoft.com/en-us/azure/iot-pnp/howto-connect-pnp-device-solution?branch=pr-en-us-114965) to create a digital twin route and recieve the digital twin change notifications.
+- Follow the howto article [How-to: Interact with an IoT Plug and Play Preview device that's connected to your solution]( https://review.docs.microsoft.com/azure/iot-pnp/howto-connect-pnp-device-solution?branch=pr-en-us-114965) to create a digital twin route and recieve the digital twin change notifications.
 
 #### Interact with the devices using IoT Explorer
 
@@ -270,10 +273,12 @@ In the IoT Model Repository portal you can view and manage public and unpublishe
 - Try manage models and user access with your own tenant following the same steps in the howto-manamge-models article.
 
 ### 5. Digital Twin Change Notification
+
 Follow the article to set up the route of the digital twin change event, and you will recieve the change event in your selected enpoint when 
+
 - First time discovery completes successfully
 - Update a property
 
 ## Complete Solution
 
-There is a complete solution available here, and you can use it as a reference, but we encourage you to figure out how to complete the scenario steps by using our public documentation and samples.
+There is a complete solution available [here](https://github.com/rido-min/pnp-ppr-sample-spec/tree/rido/thermostat/node). You can use it as a reference, but we encourage you to figure out how to complete the scenario steps by using our public documentation and samples.
