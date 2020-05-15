@@ -22,7 +22,7 @@ The [DTDL v2 Spec](https://microsoft.sharepoint.com/:w:/t/Azure_IoT/IoTPlat/Eaot
 The required hub version is only  available in the canary environment, to create a new hub you can follow the instructions from the docs but using the **subscription** and **regions** described below:
 
 - Request access to the `IOTPNP_TEST_BY_MAIN` subscription, via the Teams channel
-- Create a new IoT Hub under this subscription, wihtin the resource group `BugBash` in one of the supported regions: `Central US EUAP`
+- Create a new IoT Hub under this subscription, wihtin the resource group `BugBash` in one of the supported regions: `Central US EUAP` or `East US 2 EUAP`
 
 >NOTE: All hubs created in this subscription will be removed after the bug bash.
 
@@ -59,7 +59,7 @@ This release is supported by the next SDK versions
 The tools are available as internal previews:
 
 - [IoT Model Repository](https://test.iotmodels.trafficmanager.net/)
-- Azure IoT Explorer (available as private release in [YingXue/azure-iot-explorer/releases](https://github.com/YingXue/azure-iot-explorer/releases) )
+- Azure IoT Explorer (available as private release in [YingXue/azure-iot-explorer](https://github.com/YingXue/azure-iot-explorer/releases/tag/0.11.0) )
 - VSCode extension for DTDL (availabe as a private release in the Marketplace as[VDT Project for RC](https://marketplace.visualstudio.com/items?itemName=IoTDevExBuild.test-vdt-project) ).
 
 >Note: The VSCode extension does not support semantic types in this release. Any semantic type will be ignored (not validated) and there is no intellisense support for these types.
@@ -271,4 +271,4 @@ In the IoT Model Repository portal you can view and manage public and unpublishe
 
 ## Complete Solution
 
-There is a complete solution available here, and you can use it as a reference, but we encourage you to figure out how to complete the scenario steps by using our public documentation and samples.
+There is a complete solution available [here](https://github.com/rido-min/pnp-ppr-sample-spec/tree/team-review/node). You can use it as a reference, but we encourage you to figure out how to complete the scenario steps by using our public documentation and samples.
