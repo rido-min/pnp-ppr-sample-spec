@@ -281,4 +281,4 @@ Follow the article to set up the route of the digital twin change event, and you
 
 ## Complete Solution
 
-There is a complete solution available [here](https://github.com/rido-min/pnp-ppr-sample-spec/tree/team-review/node). You can use it as a reference, but we encourage you to figure out how to complete the scenario steps by using our public documentation and samples.
+There is a complete solution available [here](https://github.com/rido-min/pnp-ppr-sample-spec/tree/rido/thermostat/node). You can use it as a reference, but we encourage you to figure out how to complete the scenario steps by using our public documentation and samples.
