@@ -86,13 +86,9 @@ const adjustTemp = async (target) => {
 
 const startTelemetryLoop = async () => {
   telemetryLoop = setInterval(async () => {
-    if (currentTemp !== targetTemp) {
-      console.log('sending temp ' + currentTemp)
-      await digitalTwinClient.sendTelemetry(tempSensor, { temperature: currentTemp })
-      digitalTwinClient.report(tempSensor, { currentTemperature: currentTemp })
-    } else {
-      console.log('CurrentTemp equals TargetTemp, not sending temp telemetry')
-    }
+    console.log('sending temp ' + currentTemp)
+    await digitalTwinClient.sendTelemetry(tempSensor, { temperature: currentTemp })
+    digitalTwinClient.report(tempSensor, { currentTemperature: currentTemp })
     await digitalTwinClient.sendTelemetry(diag, { workingset: os.freemem() })
   }, 2000)
 }
