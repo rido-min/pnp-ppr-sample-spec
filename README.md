@@ -48,11 +48,11 @@ Tools available as internal previews are:
 
 ### Option1. Review device client samples
 
-All samples follow the same flow:
+All samples implement the Themorstat and TemperatureController models available in the [DTDL spec repo](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL/v2/samples), and use the same validation flow:
 
 1. Prepare source code for each language.
 2. Create a device and provide the connection string.
-3. Configure IoT Explorer to find the models.
+3. Configure IoT Explorer to find the models and to interact with the device.
 
 #### C-SDK
 
