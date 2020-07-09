@@ -1,9 +1,11 @@
 <!-- markdownlint-disable MD033 -->
-# IoT Plug and Play Device BugBash instructions for the Summer Refresh 2020 release
+# IoT Plug and Play Samples Bug Bash instructions for the Summer Refresh 2020 release
 
 ## Intro
 
-This bug bash is focussed on the new IoT Hub features, **device SDKs**, and tooling for the IoT Plug and Play Summer Refresh 2020 release.
+IoT Plug and Play Summer Refresh is the Public Preview Refresh leading upto GA later this year.
+
+This bug bash is focused on the new IoT Hub features, **device SDKs**, and tooling, we have device quickstarts for Node and C ready, service scenarios and more languages are coming soon.
 
 ### BugBash support and feedback
 
