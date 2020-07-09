@@ -1,9 +1,9 @@
 <!-- markdownlint-disable MD033 -->
-# IoT Plug and Play BugBash instructions for the Summer Refresh 2020 release
+# IoT Plug and Play Device BugBash instructions for the Summer Refresh 2020 release
 
 ## Intro
 
-This bug bash is focussed on the new IoT Hub features, SDKs, and tooling for the IoT Plug and Play Summer Refresh 2020 release.
+This bug bash is focussed on the new IoT Hub features, **device SDKs**, and tooling for the IoT Plug and Play Summer Refresh 2020 release.
 
 ### BugBash support and feedback
 
@@ -61,7 +61,7 @@ All samples follow the same flow:
 #### Node.js
 
 - **simple_thermostat.js** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-service-node?branch=pr-en-us-121718) has instructions to configure the [/device/samples/pnp/simple_thermostat.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/simple_thermostat.js)
-- **pnpTemperatureController** This sample implements a model with two interfaces using components. The doc is not ready, but instructions are similar to the simple_thermostat, [pnpTemperatureController.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/pnpTemperatureController.js) 
+- **pnpTemperatureController** This sample implements a model with two interfaces using components. The doc is not ready, but instructions are similar to the simple_thermostat, [pnpTemperatureController.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/pnpTemperatureController.js)
 
 ### Option2. Exploratory testing
 
