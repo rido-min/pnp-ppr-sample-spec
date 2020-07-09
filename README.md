@@ -5,7 +5,7 @@
 
 IoT Plug and Play Summer Refresh is the Public Preview Refresh leading upto GA later this year.
 
-This bug bash is focused on the new IoT Hub features, **device SDKs**, and tooling, we have device quickstarts for Node and C ready, service scenarios and more languages are coming soon.
+This bug bash is focused on the new IoT Hub features, device SDKs, and tooling, we have device quickstarts for Node and C ready, service scenarios and more languages are coming soon.
 
 ### BugBash support and feedback
 
