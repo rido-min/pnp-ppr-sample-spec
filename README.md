@@ -1,9 +1,9 @@
 <!-- markdownlint-disable MD033 -->
-# Plug and Play BugBash instructions for the Summer Refresh 2020 release
+# IoT Plug and Play BugBash instructions for the Summer Refresh 2020 release
 
 ## Intro
 
-This bug bash is focussed on the new IoT Hub features, SDKs, and tooling for the Plug and Play Summer Refresh 2020 release.
+This bug bash is focussed on the new IoT Hub features, SDKs, and tooling for the IoT Plug and Play Summer Refresh 2020 release.
 
 The DTDL v2 Spec can be found at [https://aka.ms/dtd](https://aka.ms/dtd) can be used as a reference for the language. Use the [samples](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL/v2/samples) we've provided to get started.
 
