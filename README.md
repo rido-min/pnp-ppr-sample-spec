@@ -56,6 +56,7 @@ Tools available as internal previews are:
 - [C-SDK PnP Samples](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
 - [Node](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
 - [.NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples/PnpDeviceSamples)
+- [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
 - [Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
 
 In Review
