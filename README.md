@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD033 -->
-# IoT Plug and Play Device BugBash instructions for the Summer Refresh 2020 release
+# IoT Plug and Play Samples BugBash instructions for the Summer Refresh 2020 release
 
 ## Intro
 
