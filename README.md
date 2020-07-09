@@ -1,9 +1,9 @@
 <!-- markdownlint-disable MD033 -->
-# IoT Plug and Play BugBash instructions for the Summer Refresh 2020 release
+# IoT Plug and Play Device BugBash instructions for the Summer Refresh 2020 release
 
 ## Intro
 
-This bug bash is focussed on the new IoT Hub features, SDKs, and tooling for the IoT Plug and Play Summer Refresh 2020 release.
+This bug bash is focussed on the new IoT Hub features, **device SDKs**, and tooling for the IoT Plug and Play Summer Refresh 2020 release.
 
 ### BugBash support and feedback
 
@@ -46,19 +46,26 @@ Tools available as internal previews are:
 - [IoT Model Repository](https://canary.iotmodels.trafficmanager.net/)
 - [Azure IoT Explorer](https://github.com/YingXue/azure-iot-explorer/releases/tag/PnpSummerRefresh-0707)
 
-### Create simulated device and solution from scratch
+### Option1. Review device client samples
+
+All samples follow the same flow:
+
+1. Prepare source code for each language.
+2. Create a device and provide the connection string.
+3. Configure IoT Explorer to find the models.
+
+#### C-SDK
+
+- **pnp_simple_thermostat** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-connect-device-c?branch=pr-en-us-120981) has instructions to configure the [/iothub_client/samples/pnp/pnp_simple_thermostat](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp/pnp_simple_thermostat) sample.
+
+#### Node.js
+
+- **simple_thermostat.js** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-service-node?branch=pr-en-us-121718) has instructions to configure the [/device/samples/pnp/simple_thermostat.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/simple_thermostat.js)
+- **pnpTemperatureController** This sample implements a model with two interfaces using components. The doc is not ready, but instructions are similar to the simple_thermostat, [pnpTemperatureController.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/pnpTemperatureController.js)
+
+### Option2. Exploratory testing
+
+Create simulated device and solution from scratch
 
 - Follow the instructions in this [deck](https://microsoft.sharepoint.com/:p:/t/PnPCross-TeamCore/EVKSV21fLY1DpsThEe7BpGAB0ICpX9Fjice0YCGS8JWm_A?e=5aYEQ3) to create your own simulated device and custom solution from scratch.
 - The instructions in that deck are specific to C# but can be generalized to the language of your choice as needed.
-
-#### Device client samples
-
-- [C-SDK PnP Samples](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
-- [Node](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
-- [.NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples/PnpDeviceSamples)
-- [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
-- [Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
-
-In Review
-
-- [Embedded-C-SDK Samples](https://github.com/Azure/azure-sdk-for-c/pull/862)
