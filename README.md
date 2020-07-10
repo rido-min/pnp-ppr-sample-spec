@@ -23,7 +23,7 @@ This bug bash is focused on the new IoT Hub features, device SDKs, and tooling, 
 #### IoT Hub
 
 - The required hub version is only available in the canary environment. Either use a Canary enabled subscription to create an IoT Hub or request access to the `IOTPNP_TEST_BY_MAIN` subscription, via the Teams channel mentioned above.
-- Create S1 IoTHub in region ‘Central US EUAP’.
+- Create S1 IoTHub in region ‘east us 2 euap’.
 
 >NOTE: All hubs created in this subscription will be removed after the bug bash.
 
@@ -33,7 +33,7 @@ To create the hub using the `az` CLI replace the hubname and run the script belo
 az extension add --name azure-iot
 az login
 az account set -s IOTPNP_TEST_BY_MAIN
-az iot hub create --resource-group BugBash --sku S1 --location centraluseuap --partition-count 4 --name <alias-hub-name>
+az iot hub create --resource-group BugBash --sku S1 --location eastus2euap --partition-count 4 --name <alias-hub-name>
 ```
 
 To create the hub from the portal make sure you select the right subscription, region and resource group.
