@@ -16,11 +16,7 @@ This bug bash is focused on the new IoT Hub features, device SDKs, and tooling, 
 
 #### Docs
 
-The pnp docs are available in the staging URL:
-
-[IoT Plug and Play documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-121912)
-
-To provide feedback use this [PR](https://github.com/MicrosoftDocs/azure-docs-pr/pull/121912) 
+- The pnp docs are available in the staging URL: [IoT Plug and Play documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-121912). To provide feedback use this [PR in docs](https://github.com/MicrosoftDocs/azure-docs-pr/pull/121912) 
 
 > Not all the articles have been updated, please do not provide feedback on articles not updated in July.
 
