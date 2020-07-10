@@ -14,6 +14,16 @@ This bug bash is focused on the new IoT Hub features, device SDKs, and tooling, 
 
 ### Getting started, environment and tooling
 
+#### Docs
+
+The pnp docs are available in the staging URL:
+
+[IoT Plug and Play documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-121912)
+
+To provide feedback use this [PR](https://github.com/MicrosoftDocs/azure-docs-pr/pull/121912) 
+
+> Not all the articles have been updated, please do not provide feedback on articles not updated in July.
+
 #### IoT Hub
 
 - The required hub version is only available in the canary environment. Either use a Canary enabled subscription to create an IoT Hub or request access to the `IOTPNP_TEST_BY_MAIN` subscription, via the Teams channel mentioned above.
@@ -38,7 +48,7 @@ To create the hub from the portal make sure you select the right subscription, r
 
 The DTDL v2 Spec can be found at [https://aka.ms/dtdl](https://aka.ms/dtdl) can be used as a reference for the language. Use the [samples](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL/v2/samples) we've provided to get started.
 
-- [DTDL VScode extension](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)
+- [DTDL VS Code extension](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)
 - [DTDL VS 2019 extension](https://github.com/microsoft/vs-dtdl-language-support/releases/tag/v0.1.0-rc2)
 
 #### PnP related tools
@@ -48,7 +58,7 @@ Tools available as internal previews are:
 - [IoT Model Repository](https://canary.iotmodels.trafficmanager.net/)
 - [Azure IoT Explorer](https://github.com/YingXue/azure-iot-explorer/releases/tag/PnpSummerRefresh-0709)
 
-### Option1. Review device client samples
+### Option 1. Review device client samples
 
 All samples implement the Themorstat and TemperatureController models available in the [DTDL spec repo](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL/v2/samples), and use the same validation flow:
 
@@ -65,7 +75,7 @@ All samples implement the Themorstat and TemperatureController models available 
 - **simple_thermostat.js** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-service-node?branch=pr-en-us-121718) has instructions to configure the [/device/samples/pnp/simple_thermostat.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/simple_thermostat.js)
 - **pnpTemperatureController** This sample implements a model with two interfaces using components. The doc is not ready, but instructions are similar to the simple_thermostat, [pnpTemperatureController.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/pnpTemperatureController.js)
 
-### Option2. Exploratory testing
+### Option 2. Exploratory testing
 
 Create simulated device and solution from scratch
 
