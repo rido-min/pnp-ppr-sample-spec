@@ -72,7 +72,7 @@ All samples implement the Themorstat and TemperatureController models available 
 - **simple_thermostat.js** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/azure/iot-pnp/quickstart-service-node?branch=pr-en-us-121718) has instructions to configure the [simple thermostat.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/simple_thermostat.js)
 - **pnpTemperatureController** This sample implements a model with two interfaces using components. The doc is not ready, but instructions are similar to the simple_thermostat, [pnpTemperatureController.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/pnpTemperatureController.js)
 
-- **Service sample** These samples experiment the featire on the service side. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-service-node?branch=pr-en-us-121718) has instructions run the [node service samples](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/service/javascript)  
+- **Service sample** These samples exercise the service side features. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-service-node?branch=pr-en-us-121718) has instructions run the [node service samples](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/service/javascript)  
 
 #### CSharp
 
