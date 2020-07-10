@@ -84,7 +84,7 @@ All samples implement the Themorstat and TemperatureController models available 
 - **simple_thermostat** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-connect-device-python?branch=pr-en-us-121912) has instructions to configure the [simple_thermostat](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/pnp/pnp_thermostat.py)
 - **pnpTemperatureController** This sample implements a model with two interfaces using components. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/tutorial-multiple-components-python?branch=pr-en-us-121912) has instructions to configure the [temperaturecontroller](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/pnp/pnp_temp_controller_with_thermostats.py)
 
-- **Service sample** These samples experiment the featire on the service side. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-service-python?branch=pr-en-us-121718) has instructions run the [python service samples](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview/azure-iot-hub/samples)  
+- **Service sample** These samples experiment the featire on the service side. This [Quickstart in PR](https://github.com/MicrosoftDocs/azure-docs-pr/pull/121761) has instructions run the [python service samples](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview/azure-iot-hub/samples)  
 
 ### Option 2. Exploratory testing
 
