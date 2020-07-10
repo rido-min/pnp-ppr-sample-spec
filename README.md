@@ -16,7 +16,7 @@ This bug bash is focused on the new IoT Hub features, SDKs, and tooling. We have
 
 #### Docs
 
-- The pnp docs are available in the staging URL: [IoT Plug and Play documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-121912). To provide feedback use this [PR in docs](https://github.com/MicrosoftDocs/azure-docs-pr/pull/121912) 
+- The pnp docs are available in the staging URL: [IoT Plug and Play documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-121912). To provide feedback use this [PR in docs](https://github.com/MicrosoftDocs/azure-docs-pr/pull/121912), your github account must be registered in the MicrosoftDocs org.
 
 > Not all the articles have been updated, please do not provide feedback on articles not updated in July.
 
@@ -45,7 +45,7 @@ To create the hub from the portal make sure you select the right subscription, r
 The DTDL v2 Spec can be found at [https://aka.ms/dtdl](https://aka.ms/dtdl) can be used as a reference for the language. Use the [samples](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL/v2/samples) we've provided to get started.
 
 - [DTDL VS Code extension](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)
-- [DTDL VS 2019 extension](https://github.com/microsoft/vs-dtdl-language-support/releases/tag/v0.1.0-rc2)
+- [DTDL VS 2019 extension](https://github.com/rido-min/pnp-summer-bugbash/releases/tag/1)
 
 #### PnP related tools
 
