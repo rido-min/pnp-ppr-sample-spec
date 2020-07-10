@@ -64,9 +64,8 @@ All samples implement the Themorstat and TemperatureController models available 
 
 #### C-SDK
 
-- **pnp_simple_thermostat** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-connect-device-csharp?branch=pr-en-us-121912) has instructions to configure the [pnp_simple_thermostat](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples/PnpDeviceSamples/Thermostat) sample.
+- **pnp_simple_thermostat** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-connect-device-c?branch=pr-en-us-121718) has instructions to configure the [pnp_simple_thermostat](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp/pnp_simple_thermostat) sample.
 
-- **pnpTemperatureController** This sample implements a model with two interfaces using components.This [Tutorial](https://review.docs.microsoft.com/en-us/azure/iot-pnp/tutorial-multiple-components-csharp?branch=pr-en-us-121912) has instructions to configure the [pnp_temperaturecontroller](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples/PnpDeviceSamples/TemperatureController) sample. 
 
 #### Node.js
 
@@ -74,7 +73,7 @@ All samples implement the Themorstat and TemperatureController models available 
 - **pnpTemperatureController** This sample implements a model with two interfaces using components. The doc is not ready, but instructions are similar to the simple_thermostat, [pnpTemperatureController.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/pnpTemperatureController.js)
 
 ### CSharp
-- **simple_thermostat** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/tutorial-multiple-components-csharp?branch=pr-en-us-121912 has instructions to configure the [simple_thermostat](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/pnp/pnp_thermostat.py)
+- **simple_thermostat** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/tutorial-multiple-components-csharp?branch=pr-en-us-121912 has instructions to configure the [simple_thermostat](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples/PnpDeviceSamples/Thermostat)
 - **pnpTemperatureController** This sample implements a model with two interfaces using components. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/tutorial-multiple-components-csharp?branch=pr-en-us-121912) has instructions to configure the [temperaturecontroller](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples/PnpDeviceSamples/TemperatureController)
 
 ### Python
