@@ -46,7 +46,7 @@ The DTDL v2 Spec can be found at [https://aka.ms/dtdl](https://aka.ms/dtdl) can 
 Tools available as internal previews are:
 
 - [IoT Model Repository](https://canary.iotmodels.trafficmanager.net/)
-- [Azure IoT Explorer](https://github.com/YingXue/azure-iot-explorer/releases/tag/PnpSummerRefresh-0707)
+- [Azure IoT Explorer](https://github.com/YingXue/azure-iot-explorer/releases/tag/PnpSummerRefresh-0709)
 
 ### Option1. Review device client samples
 
