@@ -5,7 +5,7 @@
 
 IoT Plug and Play Summer Refresh is the Public Preview Refresh leading upto GA later this year.
 
-This bug bash is focused on the new IoT Hub features, device SDKs, and tooling, we have device quickstarts for Node and C ready, service scenarios and more languages are coming soon.
+This bug bash is focused on the new IoT Hub features, SDKs, and tooling. We have quickstarts in various languages ready, for device and service scenarios - with more languages and advanced tutorials coming soon.
 
 ### BugBash support and feedback
 
@@ -54,7 +54,7 @@ Tools available as internal previews are:
 - [IoT Model Repository](https://canary.iotmodels.trafficmanager.net/)
 - [Azure IoT Explorer](https://github.com/YingXue/azure-iot-explorer/releases/tag/PnpSummerRefresh-0709)
 
-### Option 1. Review device client samples
+### Option 1. Review and run SDK samples
 
 All samples implement the Themorstat and TemperatureController models available in the [DTDL spec repo](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL/v2/samples), and use the same validation flow:
 
