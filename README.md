@@ -24,6 +24,7 @@ This bug bash is focused on the new IoT Hub features, SDKs, and tooling. We have
 
 - The required hub version is only available in the following regions: canary (EastUS2EUAP, CentralUSEUAP) and production (Japan East, Central US and North Europe). For Canary either use a Canary enabled subscription to create an IoT Hub or request access to the `IOTPNP_TEST_BY_MAIN` subscription, via the Teams channel mentioned above.
 - Create S1 IoTHub in any of these regions to get started.
+- Use the latest API version: 2020-05-31-preview
 
 >NOTE: All hubs created in the `IOTPNP_TEST_BY_MAIN` subscription will be removed after the bug bash. We recommend using your own subscription if you'd want to keep using your IoT Hub long term.
 
