@@ -66,7 +66,7 @@ All samples implement the Themorstat and TemperatureController models available 
 4. Note that all the sample code are in the branch **pnp-preview-refresh** in each repo.
 
 Availabe quickstarts and tutorials:
-1. You can test the 5 quickstart with component-less Device SDK  (C, C#, Java, Node, Python)
+1. You can test the 5 quickstart with Device SDK  (C, C#, Java, Node, Python)
 1. You can test the 2 quickstart with Service SDK (Node, Python)
 1. You can also test the 5 Tutorial with multi component devices (C#, Java, Node, Python)
 
