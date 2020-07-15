@@ -72,7 +72,7 @@ Availabe quickstarts and tutorials:
 
 All quickstarts and tutorials are in the [IoT Plug and Play documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-121912)
 
-You can also test the **Quickstart on Azure RTOS**, [download this archive](https://microsoft-my.sharepoint.com/:u:/p/liydu/ETyQje64iM1Iu_xpWpG8Kp0BxHZJK-QtFPrqjOl_PJdBNA?e=NGGqRl) and follow the instructions in the readme pdf file. 
+You can also test the **Quickstart on Azure RTOS for STM32L475 device**, [download this zip file](https://microsoft-my.sharepoint.com/:u:/p/liydu/ETyQje64iM1Iu_xpWpG8Kp0BxHZJK-QtFPrqjOl_PJdBNA?e=NGGqRl) and follow the instructions in the readme pdf file. 
 
 ### Option 2. Exploratory testing
 
