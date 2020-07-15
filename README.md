@@ -67,7 +67,7 @@ All samples implement the Themorstat and TemperatureController models available 
 
 Availabe quickstarts and tutorials:
 1. You can test the 5 quickstart with component-less Device SDK  (C, C#, Java, Node, Python)
-1. You can test the 2 quiclstart with Service SDK (Node, Python)
+1. You can test the 2 quickstart with Service SDK (Node, Python)
 1. You cam also test the 5 Tutorial with multi component devices (C#, Java, Node, Python)
 All quickstarts and tutorials are in the [IoT Plug and Play documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-121912)
 
