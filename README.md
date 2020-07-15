@@ -69,6 +69,7 @@ Availabe quickstarts and tutorials:
 1. You can test the 5 quickstart with component-less Device SDK  (C, C#, Java, Node, Python)
 1. You can test the 2 quickstart with Service SDK (Node, Python)
 1. You can also test the 5 Tutorial with multi component devices (C#, Java, Node, Python)
+
 All quickstarts and tutorials are in the [IoT Plug and Play documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-121912)
 
 You can also test the **Quickstart on Azure RTOS**, [download this archive](https://microsoft-my.sharepoint.com/:u:/p/liydu/ETyQje64iM1Iu_xpWpG8Kp0BxHZJK-QtFPrqjOl_PJdBNA?e=NGGqRl) and follow the instructions in the readme pdf file. 
