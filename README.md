@@ -65,29 +65,11 @@ All samples implement the Themorstat and TemperatureController models available 
 3. Configure IoT Explorer to find the models and to interact with the device.
 4. Note that all the sample code are in the branch **pnp-preview-refresh** in each repo.
 
-#### C-SDK
+You can test the 5 quickstart with component-less Device SDK  (C, C#, Java, Node, Python)
+You can test the 2 quiclstart with Service SDK (Node, Python)
+You cam also test the 5 Tutorial with multi component devices (C#, Java, Node, Python)
 
-- **pnp_simple_thermostat** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-connect-device-c?branch=pr-en-us-121912) has instructions to configure the [pnp_simple_thermostat](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp/pnp_simple_thermostat) sample.
-
-#### Node.js
-
-- **simple_thermostat.js** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-connect-device-node?branch=pr-en-us-121912) has instructions to configure the [simple thermostat.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/simple_thermostat.js)
-- **pnpTemperatureController** This sample implements a model with two interfaces using components. The doc is not ready, but instructions are similar to the simple_thermostat, [pnpTemperatureController.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/pnpTemperatureController.js)
-
-- **Service sample** These samples exercise the service side features. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-service-node?branch=pr-en-us-121912) has instructions run the [node service samples](https://github.com/Azure/azure-iot-sdk-node/tree/public-preview-pnp/digitaltwins/samples/service/javascript). 
-
-#### CSharp
-
-- **simple_thermostat** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-connect-device-csharp?branch=pr-en-us-121912) has instructions to configure the [simple_thermostat](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples/PnpDeviceSamples/Thermostat)
-- **pnpTemperatureController** This sample implements a model with two interfaces using components. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/tutorial-multiple-components-csharp?branch=pr-en-us-121912) has instructions to configure the [temperaturecontroller](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples/PnpDeviceSamples/TemperatureController)
-
-#### Python
-
-- **simple_thermostat** This sample implements a model with a single interface. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/quickstart-connect-device-python?branch=pr-en-us-121912) has instructions to configure the [simple_thermostat](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/pnp/pnp_thermostat.py)
-- **pnpTemperatureController** This sample implements a model with two interfaces using components. This [Quickstart](https://review.docs.microsoft.com/en-us/azure/iot-pnp/tutorial-multiple-components-python?branch=pr-en-us-121912) has instructions to configure the [temperaturecontroller](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/pnp/pnp_temp_controller_with_thermostats.py)
-
-- **Service sample** These samples experiment the featire on the service side. This [Quickstart in PR](https://github.com/MicrosoftDocs/azure-docs-pr/pull/121761) has instructions run the [python service samples](https://github.com/Azure/azure-iot-sdk-python/tree/digitaltwins-preview/azure-iot-hub/samples). 
-  
+All quickstarts and tutorials are in the [IoT Plug and Play documentation](https://review.docs.microsoft.com/azure/iot-pnp/?branch=pr-en-us-121912)
 
 ### Option 2. Exploratory testing
 
